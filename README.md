@@ -18,8 +18,9 @@ Real random number generation for lottery-game using quantum computer(IBM qiskit
   : Select 6 numbers in range 45
     - ref: https://dhlottery.co.kr
     
-    ![image](src/Lotto645.jpg){: width="300" height="100"}
-    <img src="src/Lotto645.jpg" width="300" height="300">
+    ![image](src/Lotto645.jpg) {: width="300" height="100"}
+    
+    <img src="src/Lotto645.jpg" width="600" height="150">
 
 - Powerball(USA)
   : Select 5 numbers in range 70 for 'white ball', 1 more selection in range 25 for 'power ball'
