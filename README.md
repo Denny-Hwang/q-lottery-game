@@ -1,3 +1,4 @@
+![image](src/Lotto645.jpg)
 # Q-Lottery-game
 ## Let's generate real random number using IBM qiskit
 
