@@ -6,8 +6,8 @@ Real random number generation for lottery-game using quantum computer(IBM qiskit
 ### There are two mode for random number generation.
 1) Simple random number generation using quantum circuit using qiskit library.
 2) User birth-day entangled random number generation.
-  : Applying user's birth-day to initial probability of the each qubit. It changes probability of the state after measurement.
-  : Applying random entanglement between qubits using user's information
+  - Applying user's birth-day to initial probability of the each qubit. It changes probability of the state after measurement.
+  - Applying random entanglement between qubits using user's information
 
 ### Service Lottery Game
 - Lotto(Korea)
