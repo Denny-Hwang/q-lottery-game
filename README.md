@@ -17,12 +17,14 @@ Real random number generation for lottery-game using quantum computer(IBM qiskit
 - Lotto(Korea)
   : Select 6 numbers in range 45
     - ref: https://dhlottery.co.kr
+    - 
     ![image](src/Lotto645.jpg)
 
 - Powerball(USA)
   : Select 5 numbers in range 70 for 'white ball', 1 more selection in range 25 for 'power ball'
     - ref: https://www.powerball.com/
-    ![image](src/'Powerball Power Play_7.png')
+    - 
+    ![image](src/'Powerball.png')
 
 ### Caution
 
