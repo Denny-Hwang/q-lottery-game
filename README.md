@@ -22,7 +22,7 @@ Real random number generation for lottery-game using quantum computer(IBM qiskit
 - **[Powerball(USA)](https://www.powerball.com/)**
   : Select 5 numbers in range 70 for 'white ball', 1 more selection in range 25 for 'power ball'
     
-    <img src="src/Powerball.png" width="800" height="150">
+    <img src="src/Powerball.png" width="800" height="300">
 
 ### Caution
 
