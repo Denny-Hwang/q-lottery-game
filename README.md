@@ -14,19 +14,16 @@ Real random number generation for lottery-game using quantum computer(IBM qiskit
 
 ### Serviced Lottery Game
 
-- Lotto(Korea)
+- **[Lotto(Korea)](https://dhlottery.co.kr/)**
   : Select 6 numbers in range 45
-    - ref: https://dhlottery.co.kr
     
-    ![image](src/Lotto645.jpg) {: width="300" height="100"}
-    
+    //![image](src/Lotto645.jpg)    
     <img src="src/Lotto645.jpg" width="600" height="150">
 
-- Powerball(USA)
+- **[Powerball(USA)](https://www.powerball.com/)**
   : Select 5 numbers in range 70 for 'white ball', 1 more selection in range 25 for 'power ball'
-    - ref: https://www.powerball.com/
     
-    ![image](src/Powerball.png){: width="300" height="100"}
+    <img src="src/Powerball.png" width="600" height="150">
 
 ### Caution
 
