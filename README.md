@@ -1,4 +1,4 @@
-### [Go -> Q-Lottery-Game](https://share.streamlit.io/denny-hwang/q-lottery-game/main/main.py)
+### Go -> [Q-Lottery-Game](https://share.streamlit.io/denny-hwang/q-lottery-game/main/main.py)
 
 ### 1) Let's generate *real random number* using IBM Quantum Computer
 
