@@ -38,8 +38,6 @@ This means that the particular outcome sequence will contain some patterns detec
         * Entanglement 
         Actually, because of the RNG generation time and IBM Q account problem, we didn't used 'Real' device. 
 
-(Under construction!!, Insert bloch sphere here!) 
-
 ---
 
 ### 3) There are two mode for random number generation
@@ -66,8 +64,10 @@ This means that the particular outcome sequence will contain some patterns detec
 
   : Select 5 numbers in range 70 for 'white ball', 1 more selection in range 25 for 'power ball'  
   <img src="src/Powerball.png" width="600" height="400">
-- Customize your lottery game  
-  : Select the number and upper bound for Q-rng
+  
+- **Custom**
+
+  : Customize your Q-lottery-game
   
 ---
 ### 5) Caution!!
@@ -80,4 +80,3 @@ This means that the particular outcome sequence will contain some patterns detec
 ### 6) Contribution
     
 - If you want to add another "Lottery game", follow the form and send PR to **[github](https://github.com/Denny-Hwang/q-lottery-game)**  
-(Under construction!)
