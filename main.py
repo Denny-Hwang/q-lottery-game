@@ -10,7 +10,7 @@ from intro_doc import intro_1, intro_2, intro_3, intro_4
 from game_doc import lotto_doc, powerball_doc, custom_doc
 
 st.sidebar.image("https://github.com/Denny-Hwang/q-lottery-game/blob/main/src/Q-Lottery-Game-logo-black.png?raw=true", width=300)
-//st.sidebar.title('Q-Lottery Game')
+#st.sidebar.title('Q-Lottery Game')
 lot_selection = st.sidebar.selectbox(
                 'Select the menu',
                 ('About Q-Lottery Game',
