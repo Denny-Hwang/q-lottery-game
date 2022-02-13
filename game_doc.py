@@ -19,6 +19,21 @@ def powerball_doc():
         In the **Power ball**, you can choose five *white ball* in the 1~69 range and select one *power ball* in the 1~26 range
         """)
 
+#######################################################################################################
+""" <RESISTRATION FORM>
+
+def (GAME_NAME)_doc():
+    st.title("GAME_NAME Q-Lottery Game")
+
+    st.write(
+        ""       
+        WRITE DOWN HERE ABOUT GAME RULE SHORTLY
+
+        "")
+        
+"""
+#######################################################################################################
+
 def custom_doc():
     st.title("Custom Q-Lottery Game")
 
