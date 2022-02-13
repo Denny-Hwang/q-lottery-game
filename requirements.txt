@@ -157,7 +157,7 @@ python-constraint==1.4.0
 python-dateutil==2.8.1
 python-editor==1.0.4
 pytz==2020.1
-pywin32==227
+pywin32
 pywinpty==0.5.7
 PyYAML==5.3.1
 pyzmq==19.0.2
