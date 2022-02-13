@@ -1,3 +1,5 @@
+### [Q-Lottery-Game](https://share.streamlit.io/denny-hwang/q-lottery-game/main/main.py)
+
 ### 1) Let's generate *real random number* using IBM Quantum Computer
 
 - Real random number generation for lottery-game using IBM quantum computer  
