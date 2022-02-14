@@ -393,7 +393,7 @@ elif lot_selection=='Lotto India(India)':
 
 ################################### Lotto7(Japan) #######################################################################
 elif lot_selection=='Lotto7(Japan)':
-    lotto_doc()
+    Lotto7_doc()
     st.write("---")
 
     bits, u_bound = 7, 37
@@ -490,7 +490,7 @@ elif lot_selection=='Lotto7(Japan)':
 
 ################################### French lottery(France) #####################################################################
 elif lot_selection=='French lottery(France)':
-    Lotto_India_doc()
+    French_lottery_doc()
     st.write("---")
 
     normal_ball_bits, n_u_bound = 5, 49
