@@ -19,7 +19,7 @@ def powerball_doc():
         In the **Power ball**, you can choose five *white ball* in the 1~69 range and select one *power ball* in the 1~26 range
         """)
 
-def Lotto_India_doc():
+def lotto_India_doc():
     st.image(
         "https://www.lotto.in/images/lottery-logos/lotto-india-logo.png",
         width=400)
@@ -30,7 +30,7 @@ def Lotto_India_doc():
         In the **Lotto India**, you can choose six numbers in the 1~50 range and select one *Joker Ball* in the 1~5 range
         """)
 
-def Lotto7_doc():
+def lotto7_doc():
     st.image(
         "https://cdn.lottolyzer.com/images/lotto7mediumlogo.gif",
         width=400)
@@ -41,7 +41,7 @@ def Lotto7_doc():
         In the **Lotto7**, you can choose seven numbers in the 1~37 range
         """)
 
-def French_lottery_doc():
+def french_lottery_doc():
     st.image(
         "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Logo_FDJ.svg/1024px-Logo_FDJ.svg.png",
         width=400)

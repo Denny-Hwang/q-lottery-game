@@ -7,7 +7,7 @@ from q_function import random_number, q_rng_lotto, get_rng_lotto
 from q_function import random_number_with_birthday, q_rng_lotto_with_birthday, get_rng_lotto_with_birthday
 
 from intro_doc import intro_1, intro_2, intro_3, intro_4
-from game_doc import lotto_doc, powerball_doc, Lotto7_doc, Lotto_India_doc, French_lottery_doc, custom_doc
+from game_doc import lotto_doc, powerball_doc, lotto7_doc, lotto_India_doc, french_lottery_doc, custom_doc
 
 st.sidebar.image("https://github.com/Denny-Hwang/q-lottery-game/blob/main/src/Q-Lottery-Game-logo-black.png?raw=true",
                  width=300)
@@ -99,9 +99,8 @@ elif lot_selection=='Lotto(Kor)':
         st.subheader('2) Birth-day entangled Q-RNG')
 
         birth_day = st.date_input(
-            "When's your birthday",
-            datetime.datetime.today(), min_value=datetime.date(1887, 8, 12),   ## Erwin Schrodinger's birth day
-        max_value=datetime.datetime.today())
+            "When's your birthday",             ## Erwin Schrodinger's birth day
+            datetime.datetime.today(), min_value=datetime.date(1887, 8, 12), max_value=datetime.datetime.today())
         st.write('Your birthday is:', birth_day)
 
         month = birth_day.month
@@ -171,36 +170,36 @@ elif lot_selection=='Powerball(USA)':
                 for i in range(int(num_game)):
                     white_ball = get_rng_lotto(n_get_num=5, bits=white_ball_bits, upper_bound=w_u_bound)
                     _, _, power_ball = q_rng_lotto(bits=power_ball_bits, upper_bound=p_u_bound)
-                    powerball_num = np.append(white_ball, power_ball)
-                    result[f'Q-powerball-{i+1}'] = powerball_num
+                    white_ball = np.append(white_ball, power_ball)
+                    result[f'Q-powerball-{i+1}'] = white_ball
                 st.dataframe(data=result.T)
             elif num_game == '2':
                 for i in range(int(num_game)):
                     white_ball = get_rng_lotto(n_get_num=5, bits=white_ball_bits, upper_bound=w_u_bound)
                     _, _, power_ball = q_rng_lotto(bits=power_ball_bits, upper_bound=p_u_bound)
-                    powerball_num = np.append(white_ball, power_ball)
-                    result[f'Q-powerball-{i+1}'] = powerball_num
+                    white_ball = np.append(white_ball, power_ball)
+                    result[f'Q-powerball-{i + 1}'] = white_ball
                 st.dataframe(data=result.T)
             elif num_game == '3':
                 for i in range(int(num_game)):
                     white_ball = get_rng_lotto(n_get_num=5, bits=white_ball_bits, upper_bound=w_u_bound)
                     _, _, power_ball = q_rng_lotto(bits=power_ball_bits, upper_bound=p_u_bound)
-                    powerball_num = np.append(white_ball, power_ball)
-                    result[f'Q-powerball-{i+1}'] = powerball_num
+                    white_ball = np.append(white_ball, power_ball)
+                    result[f'Q-powerball-{i + 1}'] = white_ball
                 st.dataframe(data=result.T)
             elif num_game == '4':
                 for i in range(int(num_game)):
                     white_ball = get_rng_lotto(n_get_num=5, bits=white_ball_bits, upper_bound=w_u_bound)
                     _, _, power_ball = q_rng_lotto(bits=power_ball_bits, upper_bound=p_u_bound)
-                    powerball_num = np.append(white_ball, power_ball)
-                    result[f'Q-powerball-{i+1}'] = powerball_num
+                    white_ball = np.append(white_ball, power_ball)
+                    result[f'Q-powerball-{i + 1}'] = white_ball
                 st.dataframe(data=result.T)
             elif num_game == '5':
                 for i in range(int(num_game)):
                     white_ball = get_rng_lotto(n_get_num=5, bits=white_ball_bits, upper_bound=w_u_bound)
                     _, _, power_ball = q_rng_lotto(bits=power_ball_bits, upper_bound=p_u_bound)
-                    powerball_num = np.append(white_ball, power_ball)
-                    result[f'Q-powerball-{i+1}'] = powerball_num
+                    white_ball = np.append(white_ball, power_ball)
+                    result[f'Q-powerball-{i + 1}'] = white_ball
                 st.dataframe(data=result.T)
 
     else:
@@ -228,8 +227,8 @@ elif lot_selection=='Powerball(USA)':
                                                              upper_bound=w_u_bound)
                     _, _, power_ball = q_rng_lotto_with_birthday(month, day, bits=power_ball_bits,
                                                                  upper_bound=p_u_bound)
-                    powerball_num = np.append(white_ball, power_ball)
-                    result[f'Q-powerball-{i+1}'] = powerball_num
+                    white_ball = np.append(white_ball, power_ball)
+                    result[f'Q-powerball-{i+1}'] = white_ball
                 st.dataframe(data=result.T)
             elif num_game == '2':
                 for i in range(int(num_game)):
@@ -237,8 +236,8 @@ elif lot_selection=='Powerball(USA)':
                                                              upper_bound=w_u_bound)
                     _, _, power_ball = q_rng_lotto_with_birthday(month, day, bits=power_ball_bits,
                                                                  upper_bound=p_u_bound)
-                    powerball_num = np.append(white_ball, power_ball)
-                    result[f'Q-powerball-{i+1}'] = powerball_num
+                    white_ball = np.append(white_ball, power_ball)
+                    result[f'Q-powerball-{i + 1}'] = white_ball
                 st.dataframe(data=result.T)
             elif num_game == '3':
                 for i in range(int(num_game)):
@@ -246,8 +245,8 @@ elif lot_selection=='Powerball(USA)':
                                                              upper_bound=w_u_bound)
                     _, _, power_ball = q_rng_lotto_with_birthday(month, day, bits=power_ball_bits,
                                                                  upper_bound=p_u_bound)
-                    powerball_num = np.append(white_ball, power_ball)
-                    result[f'Q-powerball-{i+1}'] = powerball_num
+                    white_ball = np.append(white_ball, power_ball)
+                    result[f'Q-powerball-{i + 1}'] = white_ball
                 st.dataframe(data=result.T)
             elif num_game == '4':
                 for i in range(int(num_game)):
@@ -255,8 +254,8 @@ elif lot_selection=='Powerball(USA)':
                                                              upper_bound=w_u_bound)
                     _, _, power_ball = q_rng_lotto_with_birthday(month, day, bits=power_ball_bits,
                                                                  upper_bound=p_u_bound)
-                    powerball_num = np.append(white_ball, power_ball)
-                    result[f'Q-powerball-{i+1}'] = powerball_num
+                    white_ball = np.append(white_ball, power_ball)
+                    result[f'Q-powerball-{i + 1}'] = white_ball
                 st.dataframe(data=result.T)
             elif num_game == '5':
                 for i in range(int(num_game)):
@@ -264,13 +263,13 @@ elif lot_selection=='Powerball(USA)':
                                                              upper_bound=w_u_bound)
                     _, _, power_ball = q_rng_lotto_with_birthday(month, day, bits=power_ball_bits,
                                                                  upper_bound=p_u_bound)
-                    powerball_num = np.append(white_ball, power_ball)
-                    result[f'Q-powerball-{i+1}'] = powerball_num
+                    white_ball = np.append(white_ball, power_ball)
+                    result[f'Q-powerball-{i + 1}'] = white_ball
                 st.dataframe(data=result.T)
 
 ################################### Lotto India(India) #####################################################################
 elif lot_selection=='Lotto India(India)':
-    Lotto_India_doc()
+    lotto_India_doc()
     st.write("---")
 
     normal_ball_bits, n_u_bound = 6, 50
@@ -394,7 +393,7 @@ elif lot_selection=='Lotto India(India)':
 
 ################################### Lotto7(Japan) #######################################################################
 elif lot_selection=='Lotto7(Japan)':
-    Lotto7_doc()
+    lotto7_doc()
     st.write("---")
 
     bits, u_bound = 7, 37
@@ -422,27 +421,27 @@ elif lot_selection=='Lotto7(Japan)':
             if num_game == '1':
                 for i in range(int(num_game)):
                     lotto7_num = get_rng_lotto(n_get_num=7, bits=bits, upper_bound=u_bound)
-                    result[f'{ball_name} game-{i+1}'] = lotto_num7
+                    result[f'{ball_name} game-{i+1}'] = lotto7_num
                 st.dataframe(data=result.T)
             elif num_game == '2':
                 for i in range(int(num_game)):
                     lotto7_num = get_rng_lotto(n_get_num=7, bits=bits, upper_bound=u_bound)
-                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                    result[f'{ball_name} game-{i + 1}'] = lotto7_num
                 st.dataframe(data=result.T)
             elif num_game == '3':
                 for i in range(int(num_game)):
                     lotto7_num = get_rng_lotto(n_get_num=7, bits=bits, upper_bound=u_bound)
-                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                    result[f'{ball_name} game-{i + 1}'] = lotto7_num
                 st.dataframe(data=result.T)
             elif num_game == '4':
                 for i in range(int(num_game)):
                     lotto7_num = get_rng_lotto(n_get_num=7, bits=bits, upper_bound=u_bound)
-                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                    result[f'{ball_name} game-{i + 1}'] = lotto7_num
                 st.dataframe(data=result.T)
             elif num_game == '5':
                 for i in range(int(num_game)):
                     lotto7_num = get_rng_lotto(n_get_num=7, bits=bits, upper_bound=u_bound)
-                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                    result[f'{ball_name} game-{i + 1}'] = lotto7_num
                 st.dataframe(data=result.T)
 
     else:
@@ -491,7 +490,7 @@ elif lot_selection=='Lotto7(Japan)':
 
 ################################### French lottery(France) #####################################################################
 elif lot_selection=='French lottery(France)':
-    French_lottery_doc()
+    french_lottery_doc()
     st.write("---")
 
     normal_ball_bits, n_u_bound = 5, 49
