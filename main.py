@@ -362,15 +362,17 @@ elif lot_selection=='Lotto India(India)':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
-                    _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    _, _, joker_ball = q_rng_lotto_with_birthday(month, day, bits=joker_ball_bits,
+                                                                 upper_bound=j_u_bound)
                     normal_ball = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i + 1}'] = normal_ball
+                    result[f'{ball_name}-{i+1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '2':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
-                    _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    _, _, joker_ball = q_rng_lotto_with_birthday(month, day, bits=joker_ball_bits,
+                                                                 upper_bound=j_u_bound)
                     normal_ball = np.append(normal_ball, joker_ball)
                     result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
@@ -378,7 +380,8 @@ elif lot_selection=='Lotto India(India)':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
-                    _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    _, _, joker_ball = q_rng_lotto_with_birthday(month, day, bits=joker_ball_bits,
+                                                                 upper_bound=j_u_bound)
                     normal_ball = np.append(normal_ball, joker_ball)
                     result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
@@ -386,7 +389,8 @@ elif lot_selection=='Lotto India(India)':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
-                    _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    _, _, joker_ball = q_rng_lotto_with_birthday(month, day, bits=joker_ball_bits,
+                                                                 upper_bound=j_u_bound)
                     normal_ball = np.append(normal_ball, joker_ball)
                     result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
@@ -394,7 +398,8 @@ elif lot_selection=='Lotto India(India)':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
-                    _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    _, _, joker_ball = q_rng_lotto_with_birthday(month, day, bits=joker_ball_bits,
+                                                                 upper_bound=j_u_bound)
                     normal_ball = np.append(normal_ball, joker_ball)
                     result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
