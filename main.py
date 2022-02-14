@@ -283,7 +283,7 @@ elif lot_selection=='Lotto India(India)':
         joker_ball_bits += 1
 
     result = pd.DataFrame(index=['Ball_1', 'Ball_2', 'Ball_3', 'Ball_4', 'Ball_5', 'Ball_6', 'Joker_ball'])
-    ball_name = 'Q-Lotto_Inida'
+    ball_name = 'Q-Lotto_India'
 
     mode = st.radio(
         "Select the Q-RNG lottery game mode",
