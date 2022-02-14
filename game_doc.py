@@ -16,7 +16,7 @@ def powerball_doc():
 
     st.write(
         """       
-        In the **Power ball**, you can choose five *white ball* in the range 69 and select one *power ball* in the range 26
+        In the **Power ball**, you can choose five *White ball* in the range 69 and select one *Power ball* in the range 26
         """)
 
 def lotto_India_doc():
