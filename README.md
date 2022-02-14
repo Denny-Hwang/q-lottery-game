@@ -62,8 +62,23 @@ This means that the particular outcome sequence will contain some patterns detec
 
 - **[Powerball(USA)](https://www.powerball.com/)**
 
-  : Select 5 numbers in range 70 for 'white ball', 1 more selection in range 25 for 'power ball'  
+  : Select 5 numbers in range 70 for 'white ball', 1 more selection in range 25 for 'power ball'   
   <img src="src/Powerball.png" width="600" height="400">
+  
+- **[Lotto India(India)](https://www.lotto.in/)**  
+
+  : Select 6 numbers in the range 50 and select one 'Joker Ball' in the range 5  
+  <img src="src/logo.png" width="600" height="150">
+
+- **[Lotto7(Japan)](https://en.lottolyzer.com/how-to-play/japan/lotto-7)**  
+
+  : Select 7 numbers in the 1~37 range  
+  <img src="src/lotto7mediumlogo.png" width="300" height="100">
+
+- **[French Lottery(France)](http://france-lottery.com/)**  
+
+  : Select 5 numbers in the range 49 and select one 'Lucky number' in the range 10 
+  <img src="src/Logo_FDJ.svg" width="600" height="150">
   
 - **Custom**
 
