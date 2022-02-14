@@ -11,7 +11,7 @@ def lotto_doc():
 def powerball_doc():
     st.image(
         "https://s3.amazonaws.com/cdn.powerball.com/drupal/files/2020-02/Powerball%20%2B%20PP%20Horizontal-Flat-Color.jpg",
-        width=400)
+        width=300)
     st.title("USA lottery - *Power ball*")
 
     st.write(
@@ -22,7 +22,7 @@ def powerball_doc():
 def lotto_India_doc():
     st.image(
         "https://www.lotto.in/images/lottery-logos/lotto-india-logo.png",
-        width=400)
+        width=300)
     st.title("India lottery - *Lotto India*")
 
     st.write(
@@ -33,7 +33,7 @@ def lotto_India_doc():
 def lotto7_doc():
     st.image(
         "https://cdn.lottolyzer.com/images/lotto7mediumlogo.gif",
-        width=400)
+        width=300)
     st.title("Japen lottery - *Lotto7*")
 
     st.write(
