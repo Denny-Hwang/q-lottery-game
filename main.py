@@ -7,9 +7,10 @@ from q_function import random_number, q_rng_lotto, get_rng_lotto
 from q_function import random_number_with_birthday, q_rng_lotto_with_birthday, get_rng_lotto_with_birthday
 
 from intro_doc import intro_1, intro_2, intro_3, intro_4
-from game_doc import lotto_doc, powerball_doc, custom_doc
+from game_doc import lotto_doc, powerball_doc, Lotto7_doc, Lotto_India_doc, French_lottery_doc, custom_doc
 
-st.sidebar.image("https://github.com/Denny-Hwang/q-lottery-game/blob/main/src/Q-Lottery-Game-logo-black.png?raw=true", width=300)
+st.sidebar.image("https://github.com/Denny-Hwang/q-lottery-game/blob/main/src/Q-Lottery-Game-logo-black.png?raw=true",
+                 width=300)
 #st.sidebar.title('Q-Lottery Game')
 lot_selection = st.sidebar.selectbox(
                 'Select the menu',
@@ -299,36 +300,36 @@ elif lot_selection=='Lotto India(India)':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto(n_get_num=6, bits=normal_ball_bits, upper_bound=n_u_bound)
                     _, _, joker_ball = q_rng_lotto(bits=joker_ball_bits, upper_bound=j_u_bound)
-                    total_num = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i+1}'] = total
+                    normal_ball = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i+1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '2':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto(n_get_num=6, bits=normal_ball_bits, upper_bound=n_u_bound)
                     _, _, joker_ball = q_rng_lotto(bits=joker_ball_bits, upper_bound=j_u_bound)
-                    total_num = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '3':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto(n_get_num=6, bits=normal_ball_bits, upper_bound=n_u_bound)
                     _, _, joker_ball = q_rng_lotto(bits=joker_ball_bits, upper_bound=j_u_bound)
-                    total_num = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '4':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto(n_get_num=6, bits=normal_ball_bits, upper_bound=n_u_bound)
                     _, _, joker_ball = q_rng_lotto(bits=joker_ball_bits, upper_bound=j_u_bound)
-                    total_num = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '5':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto(n_get_num=6, bits=normal_ball_bits, upper_bound=n_u_bound)
                     _, _, joker_ball = q_rng_lotto(bits=joker_ball_bits, upper_bound=j_u_bound)
-                    total_num = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
 
     else:
@@ -355,40 +356,40 @@ elif lot_selection=='Lotto India(India)':
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
                     _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
-                    total_num = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '2':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
                     _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
-                    total_num = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '3':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
                     _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
-                    total_num = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '4':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
                     _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
-                    total_num = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '5':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
                     _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
-                    total_num = np.append(normal_ball, joker_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
 
 ################################### Lotto7(Japan) #######################################################################
@@ -465,27 +466,27 @@ elif lot_selection=='Lotto7(Japan)':
             if num_game == '1':
                 for i in range(int(num_game)):
                     lotto7_num = get_rng_lotto_with_birthday(month, day, n_get_num=7, bits=bits, upper_bound=u_bound)
-                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                    result[f'{ball_name} game-{i + 1}'] = lotto7_num
                 st.dataframe(data=result.T)
             elif num_game == '2':
                 for i in range(int(num_game)):
                     lotto7_num = get_rng_lotto_with_birthday(month, day, n_get_num=7, bits=bits, upper_bound=u_bound)
-                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                    result[f'{ball_name} game-{i + 1}'] = lotto7_num
                 st.dataframe(data=result.T)
             elif num_game == '3':
                 for i in range(int(num_game)):
                     lotto7_num = get_rng_lotto_with_birthday(month, day, n_get_num=7, bits=bits, upper_bound=u_bound)
-                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                    result[f'{ball_name} game-{i + 1}'] = lotto7_num
                 st.dataframe(data=result.T)
             elif num_game == '4':
                 for i in range(int(num_game)):
                     lotto7_num = get_rng_lotto_with_birthday(month, day, n_get_num=7, bits=bits, upper_bound=u_bound)
-                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                    result[f'{ball_name} game-{i + 1}'] = lotto7_num
                 st.dataframe(data=result.T)
             elif num_game == '5':
                 for i in range(int(num_game)):
                     lotto7_num = get_rng_lotto_with_birthday(month, day, n_get_num=7, bits=bits, upper_bound=u_bound)
-                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                    result[f'{ball_name} game-{i + 1}'] = lotto7_num
                 st.dataframe(data=result.T)
 
 ################################### French lottery(France) #####################################################################
@@ -520,36 +521,36 @@ elif lot_selection=='French lottery(France)':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto(n_get_num=5, bits=normal_ball_bits, upper_bound=n_u_bound)
                     _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
-                    total_num = np.append(normal_ball, lucky_ball)
-                    result[f'{ball_name}-{i+1}'] = total
+                    normal_ball = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i+1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '2':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto(n_get_num=5, bits=normal_ball_bits, upper_bound=n_u_bound)
                     _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
-                    total_num = np.append(normal_ball, lucky_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '3':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto(n_get_num=5, bits=normal_ball_bits, upper_bound=n_u_bound)
                     _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
-                    total_num = np.append(normal_ball, lucky_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '4':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto(n_get_num=5, bits=normal_ball_bits, upper_bound=n_u_bound)
                     _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
-                    total_num = np.append(normal_ball, lucky_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '5':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto(n_get_num=5, bits=normal_ball_bits, upper_bound=n_u_bound)
                     _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
-                    total_num = np.append(normal_ball, lucky_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
 
     else:
@@ -576,40 +577,40 @@ elif lot_selection=='French lottery(France)':
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=5, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
                     _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
-                    total_num = np.append(normal_ball, lucky_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '2':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=5, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
                     _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
-                    total_num = np.append(normal_ball, lucky_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '3':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=5, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
                     _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
-                    total_num = np.append(normal_ball, lucky_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '4':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=5, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
                     _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
-                    total_num = np.append(normal_ball, lucky_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
             elif num_game == '5':
                 for i in range(int(num_game)):
                     normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=5, bits=normal_ball_bits,
                                                               upper_bound=n_u_bound)
                     _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
-                    total_num = np.append(normal_ball, lucky_ball)
-                    result[f'{ball_name}-{i + 1}'] = total
+                    normal_ball = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = normal_ball
                 st.dataframe(data=result.T)
 
 ################################### Custom #####################################################################
