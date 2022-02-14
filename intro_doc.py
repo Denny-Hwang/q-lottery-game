@@ -82,15 +82,15 @@ def intro_4():
           
         - **[Lotto India(India)](https://www.lotto.in/)**
 
-          : Select 6 numbers in the 1~50 range and select one 'Joker Ball' in the 1~5 range
+          : Select 6 numbers in the range 50 and select one 'Joker Ball' in the range 5
           
         - **[Lotto7(Japan)](https://en.lottolyzer.com/how-to-play/japan/lotto-7)**
 
-          : Select 7 numbers in the 1~37 range
+          : Select 7 numbers in the range 37
           
         - **[French Lottery(France)](http://france-lottery.com/)**
 
-          : Select 5 numbers in the 1~49 range and select one 'Lucky number' in the 1~10 range
+          : Select 5 numbers in the range 49 and select one 'Lucky number' in the range 10
           
         - **Custom**
 
