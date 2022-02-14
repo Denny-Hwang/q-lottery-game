@@ -5,7 +5,7 @@ def lotto_doc():
     st.title("Korean lottery - *Lotto 6/45*")
     st.write(
         """
-        In the **Lotto 6/45**, you can choose six numbers in the 1~45 range
+        In the **Lotto 6/45**, you can choose six numbers in the range 45
         """)
 
 def powerball_doc():
@@ -16,7 +16,7 @@ def powerball_doc():
 
     st.write(
         """       
-        In the **Power ball**, you can choose five *white ball* in the 1~69 range and select one *power ball* in the 1~26 range
+        In the **Power ball**, you can choose five *white ball* in the range 69 and select one *power ball* in the range 26
         """)
 
 def lotto_India_doc():
@@ -27,7 +27,7 @@ def lotto_India_doc():
 
     st.write(
         """       
-        In the **Lotto India**, you can choose six numbers in the 1~50 range and select one *Joker Ball* in the 1~5 range
+        In the **Lotto India**, you can choose six numbers in the range 50 and select one *Joker Ball* in the range 5
         """)
 
 def lotto7_doc():
@@ -38,7 +38,7 @@ def lotto7_doc():
 
     st.write(
         """       
-        In the **Lotto7**, you can choose seven numbers in the 1~37 range
+        In the **Lotto7**, you can choose seven numbers in the range 37
         """)
 
 def french_lottery_doc():
@@ -49,7 +49,7 @@ def french_lottery_doc():
 
     st.write(
         """       
-        In the **French_lottery**, you can choose five numbers in the 1~49 range and select one *Lucky number* in the 1~10 range
+        In the **French_lottery**, you can choose five numbers in the range 49 and select one *Lucky number* in the range 10
         """)
 
 #######################################################################################################
