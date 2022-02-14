@@ -16,6 +16,9 @@ lot_selection = st.sidebar.selectbox(
                 ('About Q-Lottery Game',
                  'Lotto(Kor)',
                  'Powerball(USA)',
+                 'Lotto India(India)',
+                 'Lotto7(Japan)',
+                 'French lottery(France)',
                  'Custom'))
 st.sidebar.write('Selected : ', lot_selection)
 
@@ -262,6 +265,351 @@ elif lot_selection=='Powerball(USA)':
                                                                  upper_bound=p_u_bound)
                     powerball_num = np.append(white_ball, power_ball)
                     result[f'Q-powerball-{i+1}'] = powerball_num
+                st.dataframe(data=result.T)
+
+################################### Lotto India(India) #####################################################################
+elif lot_selection=='Lotto India(India)':
+    Lotto_India_doc()
+    st.write("---")
+
+    normal_ball_bits, n_u_bound = 6, 50
+    joker_ball_bits, j_u_bound = 1, 5
+    result = pd.DataFrame(index=['Ball_1', 'Ball_2', 'Ball_3', 'Ball_4', 'Ball_5', 'Ball_6', 'Joker_ball'])
+    ball_name = 'Q-Lotto_Inida'
+
+    mode = st.radio(
+        "Select the Q-RNG lottery game mode",
+        ('1) Simple Q-RNG',
+         '2) Birth-day entangled Q-RNG')
+    )
+
+    st.write("---")
+
+    if mode == '1) Simple Q-RNG':
+        st.subheader('1) Simple Q-RNG for Lottery Game')
+
+        num_game = st.selectbox(
+            'How many games do you want?',
+            ('1', '2', '3', '4', '5'))
+
+        go = st.button("Q-Random Number Generation 👈")
+
+        if go:
+            if num_game == '1':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto(n_get_num=6, bits=normal_ball_bits, upper_bound=n_u_bound)
+                    _, _, joker_ball = q_rng_lotto(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    total_num = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i+1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '2':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto(n_get_num=6, bits=normal_ball_bits, upper_bound=n_u_bound)
+                    _, _, joker_ball = q_rng_lotto(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    total_num = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '3':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto(n_get_num=6, bits=normal_ball_bits, upper_bound=n_u_bound)
+                    _, _, joker_ball = q_rng_lotto(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    total_num = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '4':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto(n_get_num=6, bits=normal_ball_bits, upper_bound=n_u_bound)
+                    _, _, joker_ball = q_rng_lotto(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    total_num = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '5':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto(n_get_num=6, bits=normal_ball_bits, upper_bound=n_u_bound)
+                    _, _, joker_ball = q_rng_lotto(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    total_num = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+
+    else:
+        st.subheader('2) Birth-day entangled Q-RNG')
+
+        birth_day = st.date_input(
+            "When's your birthday",
+            datetime.datetime.today(), min_value=datetime.date(1918, 5, 11),  ## Feynman's birth day
+            max_value=datetime.datetime.today())
+        st.write('Your birthday is:', birth_day)
+
+        month = birth_day.month
+        day = birth_day.day
+
+        num_game = st.selectbox(
+            'How many games do you want?',
+            ('1', '2', '3', '4', '5'))
+
+        go = st.button("Q-Random Number Generation 👈")
+
+        if go:
+            if num_game == '1':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
+                                                              upper_bound=n_u_bound)
+                    _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    total_num = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '2':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
+                                                              upper_bound=n_u_bound)
+                    _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    total_num = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '3':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
+                                                              upper_bound=n_u_bound)
+                    _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    total_num = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '4':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
+                                                              upper_bound=n_u_bound)
+                    _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    total_num = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '5':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=6, bits=normal_ball_bits,
+                                                              upper_bound=n_u_bound)
+                    _, _, joker_ball = q_rng_lotto_with_birthday(bits=joker_ball_bits, upper_bound=j_u_bound)
+                    total_num = np.append(normal_ball, joker_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+
+################################### Lotto7(Japan) #######################################################################
+elif lot_selection=='Lotto7(Japan)':
+    lotto_doc()
+    st.write("---")
+
+    bits, u_bound = 7, 37
+    result = pd.DataFrame(index=['Num_1', 'Num_2', 'Num_3', 'Num_4', 'Num_5', 'Num_6', 'Num_7'])
+    ball_name = 'Q-lotto7'
+
+    mode = st.radio(
+        "Select the Q-RNG lottery game mode",
+        ('1) Simple Q-RNG',
+         '2) Birth-day entangled Q-RNG')
+    )
+
+    st.write("---")
+
+    if mode == '1) Simple Q-RNG':
+        st.subheader('1) Simple Q-RNG for Lottery Game')
+
+        num_game = st.selectbox(
+            'How many games do you want?',
+            ('1', '2', '3', '4', '5'))
+
+        go = st.button("Q-Random Number Generation 👈")
+
+        if go:
+            if num_game == '1':
+                for i in range(int(num_game)):
+                    lotto7_num = get_rng_lotto(n_get_num=7, bits=bits, upper_bound=u_bound)
+                    result[f'{ball_name} game-{i+1}'] = lotto_num7
+                st.dataframe(data=result.T)
+            elif num_game == '2':
+                for i in range(int(num_game)):
+                    lotto7_num = get_rng_lotto(n_get_num=7, bits=bits, upper_bound=u_bound)
+                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                st.dataframe(data=result.T)
+            elif num_game == '3':
+                for i in range(int(num_game)):
+                    lotto7_num = get_rng_lotto(n_get_num=7, bits=bits, upper_bound=u_bound)
+                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                st.dataframe(data=result.T)
+            elif num_game == '4':
+                for i in range(int(num_game)):
+                    lotto7_num = get_rng_lotto(n_get_num=7, bits=bits, upper_bound=u_bound)
+                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                st.dataframe(data=result.T)
+            elif num_game == '5':
+                for i in range(int(num_game)):
+                    lotto7_num = get_rng_lotto(n_get_num=7, bits=bits, upper_bound=u_bound)
+                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                st.dataframe(data=result.T)
+
+    else:
+        st.subheader('2) Birth-day entangled Q-RNG')
+
+        birth_day = st.date_input(
+            "When's your birthday",           ## Erwin Schrodinger's birth day
+            datetime.datetime.today(), min_value=datetime.date(1887, 8, 12), max_value=datetime.datetime.today())
+        st.write('Your birthday is:', birth_day)
+
+        month = birth_day.month
+        day = birth_day.day
+
+        num_game = st.selectbox(
+            'How many games do you want?',
+            ('1', '2', '3', '4', '5'))
+
+        go = st.button("Q-Random Number Generation 👈")
+
+        if go:
+            if num_game == '1':
+                for i in range(int(num_game)):
+                    lotto7_num = get_rng_lotto_with_birthday(month, day, n_get_num=7, bits=bits, upper_bound=u_bound)
+                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                st.dataframe(data=result.T)
+            elif num_game == '2':
+                for i in range(int(num_game)):
+                    lotto7_num = get_rng_lotto_with_birthday(month, day, n_get_num=7, bits=bits, upper_bound=u_bound)
+                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                st.dataframe(data=result.T)
+            elif num_game == '3':
+                for i in range(int(num_game)):
+                    lotto7_num = get_rng_lotto_with_birthday(month, day, n_get_num=7, bits=bits, upper_bound=u_bound)
+                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                st.dataframe(data=result.T)
+            elif num_game == '4':
+                for i in range(int(num_game)):
+                    lotto7_num = get_rng_lotto_with_birthday(month, day, n_get_num=7, bits=bits, upper_bound=u_bound)
+                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                st.dataframe(data=result.T)
+            elif num_game == '5':
+                for i in range(int(num_game)):
+                    lotto7_num = get_rng_lotto_with_birthday(month, day, n_get_num=7, bits=bits, upper_bound=u_bound)
+                    result[f'{ball_name} game-{i + 1}'] = lotto_num7
+                st.dataframe(data=result.T)
+
+################################### French lottery(France) #####################################################################
+elif lot_selection=='French lottery(France)':
+    Lotto_India_doc()
+    st.write("---")
+
+    normal_ball_bits, n_u_bound = 5, 49
+    lucky_ball_bits, l_u_bound = 1, 10
+    result = pd.DataFrame(index=['Ball_1', 'Ball_2', 'Ball_3', 'Ball_4', 'Ball_5', 'Lucky_Number'])
+    ball_name = 'Q-French_lottery'
+
+    mode = st.radio(
+        "Select the Q-RNG lottery game mode",
+        ('1) Simple Q-RNG',
+         '2) Birth-day entangled Q-RNG')
+    )
+
+    st.write("---")
+
+    if mode == '1) Simple Q-RNG':
+        st.subheader('1) Simple Q-RNG for Lottery Game')
+
+        num_game = st.selectbox(
+            'How many games do you want?',
+            ('1', '2', '3', '4', '5'))
+
+        go = st.button("Q-Random Number Generation 👈")
+
+        if go:
+            if num_game == '1':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto(n_get_num=5, bits=normal_ball_bits, upper_bound=n_u_bound)
+                    _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
+                    total_num = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i+1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '2':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto(n_get_num=5, bits=normal_ball_bits, upper_bound=n_u_bound)
+                    _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
+                    total_num = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '3':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto(n_get_num=5, bits=normal_ball_bits, upper_bound=n_u_bound)
+                    _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
+                    total_num = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '4':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto(n_get_num=5, bits=normal_ball_bits, upper_bound=n_u_bound)
+                    _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
+                    total_num = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '5':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto(n_get_num=5, bits=normal_ball_bits, upper_bound=n_u_bound)
+                    _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
+                    total_num = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+
+    else:
+        st.subheader('2) Birth-day entangled Q-RNG')
+
+        birth_day = st.date_input(
+            "When's your birthday",
+            datetime.datetime.today(), min_value=datetime.date(1918, 5, 11),  ## Feynman's birth day
+            max_value=datetime.datetime.today())
+        st.write('Your birthday is:', birth_day)
+
+        month = birth_day.month
+        day = birth_day.day
+
+        num_game = st.selectbox(
+            'How many games do you want?',
+            ('1', '2', '3', '4', '5'))
+
+        go = st.button("Q-Random Number Generation 👈")
+
+        if go:
+            if num_game == '1':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=5, bits=normal_ball_bits,
+                                                              upper_bound=n_u_bound)
+                    _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
+                    total_num = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '2':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=5, bits=normal_ball_bits,
+                                                              upper_bound=n_u_bound)
+                    _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
+                    total_num = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '3':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=5, bits=normal_ball_bits,
+                                                              upper_bound=n_u_bound)
+                    _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
+                    total_num = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '4':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=5, bits=normal_ball_bits,
+                                                              upper_bound=n_u_bound)
+                    _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
+                    total_num = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
+                st.dataframe(data=result.T)
+            elif num_game == '5':
+                for i in range(int(num_game)):
+                    normal_ball = get_rng_lotto_with_birthday(month, day, n_get_num=5, bits=normal_ball_bits,
+                                                              upper_bound=n_u_bound)
+                    _, _, lucky_ball = q_rng_lotto(bits=lucky_ball_bits, upper_bound=l_u_bound)
+                    total_num = np.append(normal_ball, lucky_ball)
+                    result[f'{ball_name}-{i + 1}'] = total
                 st.dataframe(data=result.T)
 
 ################################### Custom #####################################################################

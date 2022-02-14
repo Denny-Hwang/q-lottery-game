@@ -80,6 +80,18 @@ def intro_4():
 
           : Select 5 numbers in range 70 for 'white ball', 1 more selection in range 25 for 'power ball'
           
+        - **[Lotto India(India)](https://www.lotto.in/)**
+
+          : Select 6 numbers in the 1~50 range and select one 'Joker Ball' in the 1~5 range
+          
+        - **[Lotto7(Japan)](https://en.lottolyzer.com/how-to-play/japan/lotto-7)**
+
+          : Select 7 numbers in the 1~37 range
+          
+        - **[French Lottery(France)](http://france-lottery.com/)**
+
+          : Select 5 numbers in the 1~49 range and select one 'Lucky number' in the 1~10 range
+          
         - **Custom**
 
           : Customize your Q-lottery-game
