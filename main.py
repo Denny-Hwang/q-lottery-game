@@ -272,8 +272,16 @@ elif lot_selection=='Lotto India(India)':
     lotto_India_doc()
     st.write("---")
 
-    normal_ball_bits, n_u_bound = 6, 50
-    joker_ball_bits, j_u_bound = 1, 5
+    n_u_bound = 50
+    j_u_bound = 5
+
+    normal_ball_bits = 1
+    while (2 ** normal_ball_bits <= n_u_bound):
+        normal_ball_bits += 1
+    joker_ball_bits = 1
+    while (2 ** joker_ball_bits <= j_u_bound):
+        joker_ball_bits += 1
+
     result = pd.DataFrame(index=['Ball_1', 'Ball_2', 'Ball_3', 'Ball_4', 'Ball_5', 'Ball_6', 'Joker_ball'])
     ball_name = 'Q-Lotto_Inida'
 
@@ -396,7 +404,13 @@ elif lot_selection=='Lotto7(Japan)':
     lotto7_doc()
     st.write("---")
 
-    bits, u_bound = 7, 37
+    u_bound = 37
+
+    bits = 1
+    while (2 ** bits <= u_bound):
+        bits += 1
+
+
     result = pd.DataFrame(index=['Num_1', 'Num_2', 'Num_3', 'Num_4', 'Num_5', 'Num_6', 'Num_7'])
     ball_name = 'Q-lotto7'
 
@@ -493,8 +507,17 @@ elif lot_selection=='French lottery(France)':
     french_lottery_doc()
     st.write("---")
 
-    normal_ball_bits, n_u_bound = 5, 49
-    lucky_ball_bits, l_u_bound = 1, 10
+    n_u_bound = 49
+    l_u_bound = 10
+
+    normal_ball_bits = 1
+    while (2 ** normal_ball_bits <= n_u_bound):
+        normal_ball_bits += 1
+    lucky_ball_bits = 1
+    while (2 ** lucky_ball_bits <= l_u_bound):
+        lucky_ball_bits += 1
+
+
     result = pd.DataFrame(index=['Ball_1', 'Ball_2', 'Ball_3', 'Ball_4', 'Ball_5', 'Lucky_Number'])
     ball_name = 'Q-French_lottery'
 
