@@ -72,7 +72,7 @@ This means that the particular outcome sequence will contain some patterns detec
 
 - **[Lotto7(Japan)](https://en.lottolyzer.com/how-to-play/japan/lotto-7)**  
 
-  : Select 7 numbers in the 1~37 range  
+  : Select 7 numbers in the range 37  
   <img src="src/lotto7mediumlogo.png" width="300" height="100">
 
 - **[French Lottery(France)](http://france-lottery.com/)**  
