@@ -4,6 +4,7 @@ from qiskit import Aer, execute
 from qiskit.visualization import *
 from tqdm import tqdm
 
+
 def random_number(bits=6):
     qr = QuantumRegister(bits, 'qubit')
     cr = ClassicalRegister(bits, 'c_bit')
