@@ -35,21 +35,21 @@ def random_number_with_birthday(month, day, bits=6):
     circuit.h(qr)
 
     ## birth-day initialization
-    month_init = month / 12
+    month_init = (month-1) / (12-1)
     day_30 = [4, 6, 9, 11]
     if month == 2:
         if day == 29:
-            day_init = day / 29
+            day_init = (day-1) / (29-1)
         else:
-            day_init = day / 28
+            day_init = (day-1) / (28-1)
     elif np.isin(month, day_30):
-        day_init = day / 30
+        day_init = (day-1) / (30-1)
     else:
-        day_init = day / 31
+        day_init = (day-1) / (31-1)
 
     print(month_init, day_init)
-    circuit.rx(month_init, bits)
-    circuit.rx(day_init, bits + 1)
+    circuit.rx(month_init * np.pi(), bits)
+    circuit.rx(day_init * np.pi(), bits + 1)
 
     circuit.barrier()
 
