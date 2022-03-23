@@ -34,6 +34,7 @@ def random_number_with_birthday(month, day, bits=6):
     circuit.reset(range(bits + 2))
     circuit.h(qr)
 
+    ###
     ## birth-day initialization
     month_init = (month-1) / (12-1)
     day_30 = [4, 6, 9, 11]
