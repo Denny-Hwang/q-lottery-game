@@ -48,9 +48,9 @@ def random_number_with_birthday(month, day, bits=6):
     else:
         day_init = (day-1) / (31-1)
 
-    print(month_init, day_init)
-    circuit.rx(month_init * np.pi(), bits)
-    circuit.rx(day_init * np.pi(), bits + 1)
+    print(month_init*np.pi, day_init*np.pi)
+    circuit.rx(month_init*np.pi, bits)
+    circuit.rx(day_init*np.pi, bits + 1)
 
     circuit.barrier()
 
