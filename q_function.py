@@ -55,7 +55,7 @@ def random_number_with_birthday(month, day, bits=6):
     circuit.barrier()
 
     circuit.cry(month_init*np.pi, bits, month % bits)
-    circuit.cry(day_init*np.pi, bits + 1, day % bits,)
+    circuit.cry(day_init*np.pi, bits + 1, day % bits)
 
     circuit.barrier()
 
