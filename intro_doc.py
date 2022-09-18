@@ -36,8 +36,8 @@ def intro_1():
         -  2) **Qauntum circuit** based random number generation. **[IBM Quantum system](https://quantum-computing.ibm.com/services/docs/services/manage/systems/)** services cryogenic based quantum processor
             - Using this cloud based quantum computer, we could make quantum circuit for specific operation
             - In this application we use the "**[H(Hadamard) gate](https://learn.qiskit.org/course/ch-states/single-qubit-gates#hgate)**" for 
-            **"[superposition](https://en.wikipedia.org/wiki/Quantum_superposition)"** and "**[CNOT gate](https://qiskit.org/textbook/ch-gates/multiple-qubits-entangled-states.html#cnot)**" for **"[entanglement](https://en.wikipedia.org/wiki/Quantum_entanglement)"** between the qubits  
-                *<Superposition>*  
+            **"[superposition](https://en.wikipedia.org/wiki/Quantum_superposition)"** and "**[CRY gate](https://qiskit.org/documentation/stubs/qiskit.circuit.QuantumCircuit.cry.html)**" for **"[entanglement](https://en.wikipedia.org/wiki/Quantum_entanglement)"** between the qubits  
+                *<Superposition>*
                 - state of the single qubit has 50/50 measurement probability of |0⟩/|1⟩ state  
                 *<Entanglement>*  
                 - Actually, because of the 'RNG generation time' and 'IBM Q account problem', we didn't used 'Real' device.  
