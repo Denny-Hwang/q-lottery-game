@@ -59,7 +59,7 @@ def intro_3():
         """
         #### B) Birth-day entangled random number generation
 
-            - Add two qubit for entanglement
+            - Add two qubits for entanglement
             - Applying user's birth-day as a rotational angle of Ry gate
             - Add controlled rotational y gate on birth-day qubits and RNG qubits
             - Your birth-day will make some bias to the controlled qubits
