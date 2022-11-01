@@ -62,7 +62,7 @@ def intro_3():
             - Add two qubit for entanglement
             - Applying user's birth-day as a rotational angle of Ry gate
             - Add controlled rotational y gate on birth-day qubits and RNG qubits
-            - Your birth-day will make some bias to the controlled qubits 
+            - Your birth-day will make some bias to the controlled qubits
 
         """)
 
