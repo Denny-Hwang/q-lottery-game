@@ -25,7 +25,7 @@ st.sidebar.write('Selected : ', lot_selection)
 
 
 ################################### Intro #######################################################################
-if lot_selection=='About Q-Lottery Game':
+if lot_selection == 'About Q-Lottery Game':
     intro_1()
 
     intro_2()
@@ -44,7 +44,7 @@ if lot_selection=='About Q-Lottery Game':
     intro_4()
 
 ################################### Lotto(Kor) #######################################################################
-elif lot_selection=='Lotto(Kor)':
+elif lot_selection == 'Lotto(Kor)':
     lotto_doc()
     st.write("---")
 
@@ -140,7 +140,7 @@ elif lot_selection=='Lotto(Kor)':
                 st.dataframe(data=result)
 
 ################################### Powerball(USA) #####################################################################
-elif lot_selection=='Powerball(USA)':
+elif lot_selection == 'Powerball(USA)':
     powerball_doc()
     st.write("---")
 
@@ -268,7 +268,7 @@ elif lot_selection=='Powerball(USA)':
                 st.dataframe(data=result)
 
 ################################### Lotto India(India) #####################################################################
-elif lot_selection=='Lotto India(India)':
+elif lot_selection == 'Lotto India(India)':
     lotto_India_doc()
     st.write("---")
 
@@ -405,7 +405,7 @@ elif lot_selection=='Lotto India(India)':
                 st.dataframe(data=result)
 
 ################################### Lotto7(Japan) #######################################################################
-elif lot_selection=='Lotto7(Japan)':
+elif lot_selection == 'Lotto7(Japan)':
     lotto7_doc()
     st.write("---")
 
@@ -508,7 +508,7 @@ elif lot_selection=='Lotto7(Japan)':
                 st.dataframe(data=result)
 
 ################################### French lottery(France) #####################################################################
-elif lot_selection=='French lottery(France)':
+elif lot_selection == 'French lottery(France)':
     french_lottery_doc()
     st.write("---")
 
@@ -641,7 +641,7 @@ elif lot_selection=='French lottery(France)':
                 st.dataframe(data=result)
 
 ################################### Custom #####################################################################
-elif lot_selection=='Custom':
+elif lot_selection == 'Custom':
     custom_doc()
     st.write("---")
 
@@ -650,8 +650,8 @@ elif lot_selection=='Custom':
     u_bound = st.number_input('Choose the upper bound of your Q-random number   '
                               '(Min:2, Max:9,000,000,000,000,000)', step=1, min_value=2, max_value=9000000000000000)
 
-    bits=1
-    while(2**bits <= u_bound):
+    bits = 1
+    while 2**bits <= u_bound:
         bits += 1
     print(f"bits : {bits}")
 
