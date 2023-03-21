@@ -180,7 +180,8 @@ SQLAlchemy==1.3.13
 sqlparse==0.4.1
 srsly==1.0.2
 statsmodels==0.12.0
-streamlit==0.87.0
+#streamlit==0.87.0
+click==8.0
 suod==0.0.4
 sympy==1.8
 tabulate==0.8.7
