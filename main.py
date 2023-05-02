@@ -268,7 +268,7 @@ elif lot_selection == 'Powerball(USA)':
 
 ################################### Lotto India(India) #####################################################################
 elif lot_selection == 'Lotto India(India)':
-    lotto_India_doc()
+    lotto_india_doc()
     st.write("---")
 
     n_u_bound = 50
