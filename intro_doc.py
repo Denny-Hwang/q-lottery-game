@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 def intro_1():
     st.title("Quantum Lottery Game")
     st.write(
@@ -45,6 +46,7 @@ def intro_1():
 
         """)
 
+
 def intro_2():
     st.write(
         """
@@ -53,6 +55,7 @@ def intro_2():
 
         #### A) Simple random number generation using quantum circuit using qiskit library
         """)
+
 
 def intro_3():
     st.write(
@@ -65,6 +68,7 @@ def intro_3():
             - Your birth-day will make some bias to the controlled qubits
 
         """)
+
 
 def intro_4():
     st.write(
