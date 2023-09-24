@@ -3,7 +3,7 @@ attrs==23.1.0
 backports.zoneinfo==0.2.1
 blinker==1.6.2
 cachetools==5.3.0
-//certifi @ file:///C:/b/abs_85o_6fm0se/croot/certifi_1671487778835/work/certifi
+#certifi @ file:///C:/b/abs_85o_6fm0se/croot/certifi_1671487778835/work/certifi
 cffi==1.15.1
 charset-normalizer==3.1.0
 click==8.1.3
