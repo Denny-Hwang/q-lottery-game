@@ -58,7 +58,7 @@ requests-ntlm==1.1.0
 rich==13.3.5
 rustworkx==0.12.1
 scipy==1.7.3
-shared-memory38==0.1.2
+#shared-memory38==0.1.2
 singledispatchmethod==1.0
 six==1.16.0
 smmap==5.0.0
