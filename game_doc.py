@@ -24,7 +24,8 @@ def powerball_doc():
 
 def lotto_india_doc():
     st.image(
-        "https://www.lotto.in/images/lottery-logos/lotto-india-logo.png",
+        "./q-lottery-game/src/Powerball.png",
+        # "https://www.lotto.in/images/lottery-logos/lotto-india-logo.png",
         width=300)
     st.title("India lottery - *Lotto India*")
 
