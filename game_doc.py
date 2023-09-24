@@ -12,7 +12,7 @@ def lotto_doc():
 
 def powerball_doc():
     st.image(
-        "https://s3.amazonaws.com/cdn.powerball.com/drupal/files/2020-02/Powerball%20%2B%20PP%20Horizontal-Flat-Color.jpg",
+        "https://cdn.powerball.com/v01/media/powerball-flat-color.jpg",
         width=300)
     st.title("USA lottery - *Power ball*")
 
