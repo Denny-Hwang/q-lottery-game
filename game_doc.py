@@ -12,7 +12,7 @@ def lotto_doc():
 
 def powerball_doc():
     st.image(
-        "https://cdn.powerball.com/v01/media/powerball-flat-color.jpg",
+        "https://github.com/Denny-Hwang/q-lottery-game/blob/main/src/Powerball.png",
         width=300)
     st.title("USA lottery - *Power ball*")
 
@@ -24,8 +24,7 @@ def powerball_doc():
 
 def lotto_india_doc():
     st.image(
-        "./q-lottery-game/src/Powerball.png",
-        # "https://www.lotto.in/images/lottery-logos/lotto-india-logo.png",
+        "https://www.lotto.in/images/lottery-logos/lotto-india-logo.png",
         width=300)
     st.title("India lottery - *Lotto India*")
 
