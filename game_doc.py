@@ -38,7 +38,7 @@ def lotto7_doc():
     st.image(
         "https://cdn.lottolyzer.com/images/lotto7mediumlogo.gif",
         width=300)
-    st.title("Japen lottery - *Lotto7*")
+    st.title("Japan lottery - *Lotto7*")
 
     st.write(
         """       
