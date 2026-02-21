@@ -6,6 +6,7 @@ pandas>=2.1.0
 # Quantum Computing
 qiskit>=1.0.0
 qiskit-aer>=0.14.0
+pylatexenc>=2.10
 
 # Visualization
 matplotlib>=3.8.0
