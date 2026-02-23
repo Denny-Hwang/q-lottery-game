@@ -1,13 +1,10 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import datetime
 
 from q_function import (
     q_rng_lotto,
-    get_rng_lotto,
     q_rng_lotto_with_birthday,
-    get_rng_lotto_with_birthday,
     bits_needed,
 )
 from intro_doc import intro_1, intro_2, intro_3, intro_4
@@ -26,26 +23,50 @@ st.sidebar.write("Selected : ", lot_selection)
 
 
 # ─── Helper functions ──────────────────────────────────────────────────────────
-def generate_numbers(is_birthday, month, day, main_count, main_bits, main_bound,
-                     bonus_bits=None, bonus_bound=None):
-    """Generate lottery numbers for a single game."""
-    if is_birthday:
-        numbers = get_rng_lotto_with_birthday(
-            month, day, n_get_num=main_count, bits=main_bits, upper_bound=main_bound,
-        )
-    else:
-        numbers = get_rng_lotto(n_get_num=main_count, bits=main_bits, upper_bound=main_bound)
+def generate_numbers_detailed(is_birthday, month, day, main_count, main_bits, main_bound,
+                               bonus_bits=None, bonus_bound=None):
+    """Generate lottery numbers with detailed quantum circuit data."""
+    lotto = []
+    details = []  # list of (binary_str, decimal)
+    main_circuit_fig = None
 
+    for _ in range(main_count):
+        if is_birthday:
+            fig, raw, dec = q_rng_lotto_with_birthday(
+                month, day, bits=main_bits, upper_bound=main_bound)
+        else:
+            fig, raw, dec = q_rng_lotto(bits=main_bits, upper_bound=main_bound)
+
+        while dec in lotto:
+            if is_birthday:
+                fig, raw, dec = q_rng_lotto_with_birthday(
+                    month, day, bits=main_bits, upper_bound=main_bound)
+            else:
+                fig, raw, dec = q_rng_lotto(bits=main_bits, upper_bound=main_bound)
+
+        binary_str = raw.split(" ")[0][:main_bits]
+        lotto.append(dec)
+        details.append((binary_str, dec))
+        main_circuit_fig = fig
+
+    # Sort main numbers and their details together
+    paired = sorted(zip(lotto, details), key=lambda x: x[0])
+    numbers = [p[0] for p in paired]
+    details = [p[1] for p in paired]
+
+    bonus_circuit_fig = None
     if bonus_bound is not None:
         if is_birthday:
-            _, _, bonus = q_rng_lotto_with_birthday(
-                month, day, bits=bonus_bits, upper_bound=bonus_bound,
-            )
+            fig, raw, dec = q_rng_lotto_with_birthday(
+                month, day, bits=bonus_bits, upper_bound=bonus_bound)
         else:
-            _, _, bonus = q_rng_lotto(bits=bonus_bits, upper_bound=bonus_bound)
-        numbers = np.append(numbers, bonus)
+            fig, raw, dec = q_rng_lotto(bits=bonus_bits, upper_bound=bonus_bound)
+        binary_str = raw.split(" ")[0][:bonus_bits]
+        numbers.append(dec)
+        details.append((binary_str, dec))
+        bonus_circuit_fig = fig
 
-    return numbers
+    return numbers, details, main_circuit_fig, bonus_circuit_fig
 
 
 def render_game(config):
@@ -79,14 +100,19 @@ def render_game(config):
         st.subheader("1) Simple Q-RNG for Lottery Game")
 
     num_game = st.selectbox("How many games do you want?", (1, 2, 3, 4, 5))
+    show_details = st.toggle("Show Quantum Circuit & Decoding Details", value=True)
     go = st.button("Q-Random Number Generation \U0001F448")
 
     if go:
         main_bits = bits_needed(config.main_upper_bound)
         bonus_bits = bits_needed(config.bonus_upper_bound) if config.bonus_upper_bound else None
 
+        all_game_details = []
+        all_main_figs = []
+        all_bonus_figs = []
+
         for i in range(num_game):
-            numbers = generate_numbers(
+            numbers, details, main_fig, bonus_fig = generate_numbers_detailed(
                 is_birthday, month, day,
                 main_count=config.main_count,
                 main_bits=main_bits,
@@ -95,7 +121,49 @@ def render_game(config):
                 bonus_bound=config.bonus_upper_bound,
             )
             result[f"{config.col_prefix}-{i + 1}"] = numbers
+            all_game_details.append(details)
+            all_main_figs.append(main_fig)
+            all_bonus_figs.append(bonus_fig)
+
         st.dataframe(data=result)
+
+        if show_details:
+            st.write("---")
+            st.subheader("Quantum Circuit & Decoding Details")
+
+            for i in range(num_game):
+                with st.expander(
+                    f"Game {i + 1}: {config.col_prefix}-{i + 1}",
+                    expanded=(num_game == 1),
+                ):
+                    if all_bonus_figs[i] is not None:
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            st.write("**Quantum Circuit (Main Numbers)**")
+                            st.pyplot(all_main_figs[i])
+                        with col2:
+                            st.write("**Quantum Circuit (Bonus Ball)**")
+                            st.pyplot(all_bonus_figs[i])
+                    else:
+                        st.write("**Quantum Circuit**")
+                        st.pyplot(all_main_figs[i])
+
+                    st.write("**Binary → Decimal Decoding**")
+                    mapping_data = []
+                    for label, (binary, decimal) in zip(
+                        config.ball_labels, all_game_details[i]
+                    ):
+                        mapping_data.append({
+                            "Ball": label,
+                            "Measurement (Binary)": binary,
+                            "→": "→",
+                            "Number (Decimal)": int(decimal),
+                        })
+                    st.dataframe(
+                        pd.DataFrame(mapping_data),
+                        hide_index=True,
+                        use_container_width=True,
+                    )
 
 
 # ─── Page routing ──────────────────────────────────────────────────────────────
@@ -160,18 +228,52 @@ elif lot_selection == "Custom":
         st.subheader("1) Simple Q-RNG for Lottery Game")
 
     num_game = st.selectbox("How many games do you want?", (1, 2, 3, 4, 5))
+    show_details = st.toggle("Show Quantum Circuit & Decoding Details", value=True)
     go = st.button("Q-Random Number Generation \U0001F448")
 
     if go:
+        all_game_details = []
+        all_main_figs = []
+
         for i in range(num_game):
-            if is_birthday:
-                custom_num = get_rng_lotto_with_birthday(
-                    month, day, n_get_num=custom_n, bits=bits, upper_bound=u_bound,
-                )
-            else:
-                custom_num = get_rng_lotto(n_get_num=custom_n, bits=bits, upper_bound=u_bound)
-            result[f"Q-lotto-{i + 1}"] = custom_num
+            numbers, details, main_fig, _ = generate_numbers_detailed(
+                is_birthday, month, day,
+                main_count=custom_n,
+                main_bits=bits,
+                main_bound=u_bound,
+            )
+            result[f"Q-lotto-{i + 1}"] = numbers
+            all_game_details.append(details)
+            all_main_figs.append(main_fig)
+
         st.dataframe(data=result)
+
+        if show_details:
+            st.write("---")
+            st.subheader("Quantum Circuit & Decoding Details")
+
+            for i in range(num_game):
+                with st.expander(
+                    f"Game {i + 1}: Q-lotto-{i + 1}",
+                    expanded=(num_game == 1),
+                ):
+                    st.write("**Quantum Circuit**")
+                    st.pyplot(all_main_figs[i])
+
+                    st.write("**Binary → Decimal Decoding**")
+                    mapping_data = []
+                    for j, (binary, decimal) in enumerate(all_game_details[i]):
+                        mapping_data.append({
+                            "Ball": index_list[j],
+                            "Measurement (Binary)": binary,
+                            "→": "→",
+                            "Number (Decimal)": int(decimal),
+                        })
+                    st.dataframe(
+                        pd.DataFrame(mapping_data),
+                        hide_index=True,
+                        use_container_width=True,
+                    )
 
 elif lot_selection in GAMES:
     render_game(GAMES[lot_selection])
