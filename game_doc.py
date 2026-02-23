@@ -2,7 +2,9 @@ import streamlit as st
 
 
 def lotto_doc():
-    st.image("https://www.dhlottery.co.kr/images/company/img_bi_intro_logo1.png", width=300)
+    st.image(
+        "https://github.com/Denny-Hwang/q-lottery-game/blob/main/src/Lotto645.jpg?raw=true",
+        width=300)
     st.title("Korean lottery - *Lotto 6/45*")
     st.write(
         """
@@ -12,7 +14,7 @@ def lotto_doc():
 
 def powerball_doc():
     st.image(
-        "https://github.com/Denny-Hwang/q-lottery-game/blob/main/src/Powerball.png",
+        "https://github.com/Denny-Hwang/q-lottery-game/blob/main/src/Powerball.png?raw=true",
         width=300)
     st.title("USA lottery - *Power ball*")
 
@@ -36,7 +38,7 @@ def lotto_india_doc():
 
 def lotto7_doc():
     st.image(
-        "https://cdn.lottolyzer.com/images/lotto7mediumlogo.gif",
+        "https://github.com/Denny-Hwang/q-lottery-game/blob/main/src/lotto7mediumlogo.png?raw=true",
         width=300)
     st.title("Japan lottery - *Lotto7*")
 
