@@ -139,6 +139,56 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "ko": "양자 난수 생성에 실패했어요. 다시 시도해 주세요.",
         "en": "Could not generate a quantum random number. Please retry.",
     },
+    # ── Download ───────────────────────────────────────────────────────────
+    "download.button": {
+        "ko": "🖼️ 결과 카드 다운로드 (PNG)",
+        "en": "🖼️ Download result card (PNG)",
+    },
+    "download.help": {
+        "ko": "친구한테 자랑할 수 있는 이미지 한 장으로 저장해요.",
+        "en": "Save a shareable image you can show off to friends.",
+    },
+    # ── Circuit caption ────────────────────────────────────────────────────
+    "details.circuit.caption": {
+        "ko": "H 게이트가 양자 동전 던지기 역할을 합니다. 측정 결과를 이진수로 읽고 십진수로 변환합니다.",
+        "en": "The H gate acts as a quantum coin flip; the measurement is read out as a bit string and converted to decimal.",
+    },
+    # ── Comparison with the latest Korean Lotto draw ───────────────────────
+    "compare.heading": {
+        "ko": "📡 이번 주 회차와 비교",
+        "en": "📡 Compare with this week's draw",
+    },
+    "compare.fetching": {
+        "ko": "최신 회차 정보를 가져오는 중…",
+        "en": "Fetching the latest draw…",
+    },
+    "compare.unavailable": {
+        "ko": "최신 회차 정보를 가져오지 못했어요. 잠시 후 다시 시도해 주세요.",
+        "en": "Couldn't fetch the latest draw right now. Please try again later.",
+    },
+    "compare.draw_header": {
+        "ko": "{n}회차 ({date}) 당첨번호",
+        "en": "Draw #{n} ({date}) winning numbers",
+    },
+    "compare.bonus": {"ko": "보너스", "en": "Bonus"},
+    "compare.row_summary": {
+        "ko": "{label} → 일치 {match}개{bonus_suffix} · {rank}",
+        "en": "{label} → {match} matched{bonus_suffix} · {rank}",
+    },
+    "compare.bonus_hit_suffix": {
+        "ko": " + 보너스",
+        "en": " + bonus",
+    },
+    "compare.rank.1st": {"ko": "🥇 1등!", "en": "🥇 1st prize!"},
+    "compare.rank.2nd": {"ko": "🥈 2등!", "en": "🥈 2nd prize!"},
+    "compare.rank.3rd": {"ko": "🥉 3등", "en": "🥉 3rd prize"},
+    "compare.rank.4th": {"ko": "🎉 4등", "en": "🎉 4th prize"},
+    "compare.rank.5th": {"ko": "🎈 5등", "en": "🎈 5th prize"},
+    "compare.rank.none": {"ko": "꽝 (다음 기회에!)", "en": "No prize (better luck next time!)"},
+    "compare.disclaimer": {
+        "ko": "🙃 이번 회차 결과는 이미 확정된 번호이며, 양자 RNG로 생성한 번호와는 사후 비교일 뿐입니다.",
+        "en": "🙃 The draw has already happened — this is a retrospective comparison with quantum-generated picks.",
+    },
 }
 
 
