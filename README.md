@@ -1,97 +1,96 @@
 [<img src="src/Q-Lottery-Game-logo-black.png" width="800" height="400">](https://share.streamlit.io/denny-hwang/q-lottery-game/main/main.py)
+
 ---
 
-### 1) Let's generate *real random number* using IBM Quantum Computer
+### 1) Generate *real* random numbers with a quantum computer
 
-- Real random number generation for lottery-game using IBM quantum computer  
-**[IBM Qiskit library](https://qiskit.org/)**
+Real random number generation for lottery games, powered by the **[IBM Qiskit library](https://qiskit.org/)**.
 
 ---
 
 ### 2) What is *real* random number generation?
 
-- "**Random number generation(RNG)** is a sequence of numbers or symbols that cannot be reasonably predicted better than by random chance is generated. 
-This means that the particular outcome sequence will contain some patterns detectable in hindsight but **unpredictable** to foresight"(Wikipedia)   
+> "**Random number generation (RNG)** is a sequence of numbers or symbols that cannot be reasonably predicted better than by random chance. The particular outcome sequence will contain some patterns detectable in hindsight but **unpredictable** to foresight." — Wikipedia
 
-- There are two method for [RNG](https://en.wikipedia.org/wiki/Random_number_generation)
+There are two methods of [RNG](https://en.wikipedia.org/wiki/Random_number_generation):
 
-    - **"True" random number generation(TRNG)** uses measurement of some physical phenomenon that is expected to be random and then compensates 
-    for possible biases in the measurement process
+- **True random number generation (TRNG)** uses measurement of a physical phenomenon that is expected to be random, then compensates for possible biases in the measurement process.
+- **Pseudo random number generation (PRNG)** uses a computational algorithm that produces long sequences of apparently random results, which are in fact completely determined by a shorter initial value (the seed).
 
-    - **"Pseudo" random number generation(PRNG)** uses computational algorithm that can produce long sequences of apparently random results, 
-    which are in fact completely determined by a shorter initial value, known as a seed value or key
+This application uses an IBM-flavored quantum simulator to generate real random numbers via the **superposition** of qubit states.
 
+Two routes to RNG with **[Qiskit](https://qiskit.org/)**:
 
-- In this application, we use IBM cloud quantum computer to generate real random number using the **superpositon** of the qubit states. 
-- There are some way for generating random number using **[Qiskit(Quantum Information Software Kit)](https://qiskit.org/)**
-
--  1) **Qiskit RNG**
-    - It needed IBM Quantum account for IBM Quantum backends. So, skip this method for this application.
-    If you want to use this library, check this links below  
-        - https://qiskit.org/documentation/apidoc/ibmq_random.html  
-        - https://github.com/qiskit-community/qiskit_rng/
--  2) **Qauntum circuit** based random number generation. **[IBM Quantum system](https://quantum-computing.ibm.com/services/docs/services/manage/systems/)** services cryogenic based quantum processor
-    - Using this cloud based quantum computer, we could make quantum circuit for specific operation
-    - In this application we use the "**[H(Hadamard) gate](https://learn.qiskit.org/course/ch-states/single-qubit-gates#hgate)**" for 
-    **"[superposition](https://en.wikipedia.org/wiki/Quantum_superposition)"** and "**[CNOT gate](https://qiskit.org/textbook/ch-gates/multiple-qubits-entangled-states.html#cnot)**" for **"[entanglement](https://en.wikipedia.org/wiki/Quantum_entanglement)"** between the qubits  
-        * Superposition state of the single qubit has 50/50 measurement probability of |0⟩/|1⟩ state  
-        * Entanglement 
-        Actually, because of the RNG generation time and IBM Q account problem, we didn't used 'Real' device. 
+1. **Qiskit RNG** — requires an IBM Quantum account, so this app skips it. See:
+   - https://qiskit.org/documentation/apidoc/ibmq_random.html
+   - https://github.com/qiskit-community/qiskit_rng/
+2. **Quantum-circuit-based RNG** using the **[IBM Quantum system](https://quantum-computing.ibm.com/services/docs/services/manage/systems/)**.
+   - We build a quantum circuit using the **[H (Hadamard) gate](https://learn.qiskit.org/course/ch-states/single-qubit-gates#hgate)** for **[superposition](https://en.wikipedia.org/wiki/Quantum_superposition)** and the **[CRY gate](https://qiskit.org/documentation/stubs/qiskit.circuit.QuantumCircuit.cry.html)** for **[entanglement](https://en.wikipedia.org/wiki/Quantum_entanglement)** between qubits.
+   - Because of generation time and IBM Q account constraints, we use the local `AerSimulator` as a backend (it mimics an IBMQ device).
 
 ---
 
-### 3) There are two mode for random number generation
-        
-#### A) Simple random number generation using quantum circuit using qiskit library
+### 3) Two modes of random number generation
 
-#### B) Birth-day entangled random number generation
-        
-    - Add two qubit for entanglement
-    - Applying user's birth-day to initial probability of the qubits
-    - Add CNOT gate on birth-day qubit and RNG qubit
-    - Your birth-day will change the 50/50 probability of some qubits to another random value 
-    
----
-    
-### 4) Serviced Lottery Game
+#### A) Simple Q-RNG
 
-- **[Lotto(Korea)](https://dhlottery.co.kr/)**
+Pure Hadamard-gate-based superposition. Every bit is a fair coin flip.
 
-  : Select 6 numbers in range 45  
-  <img src="src/Lotto645.jpg" width="600" height="150">
+#### B) Birthday-entangled Q-RNG
 
-- **[Powerball(USA)](https://www.powerball.com/)**
-
-  : Select 5 numbers in range 70 for 'white ball', 1 more selection in range 25 for 'power ball'   
-  <img src="src/Powerball.png" width="600" height="400">
-  
-- **[Lotto India(India)](https://www.lotto.in/)**  
-
-  : Select 6 numbers in the range 50 and select one 'Joker Ball' in the range 5  
-  <img src="src/logo.png" width="600" height="150">
-
-- **[Lotto7(Japan)](https://en.lottolyzer.com/how-to-play/japan/lotto-7)**  
-
-  : Select 7 numbers in the range 37  
-  <img src="src/lotto7mediumlogo.png" width="300" height="100">
-
-- **[French Lottery(France)](http://france-lottery.com/)**  
-
-  : Select 5 numbers in the range 49 and select one 'Lucky number' in the range 10 
-  <img src="src/Logo_FDJ.svg" width="600" height="150">
-  
-- **Custom**
-
-  : Customize your Q-lottery-game
-  
----
-### 5) Caution!!
-
-    - Although real random number generated by QC is more random than pseudo random number, 
-      it does not guarantee winning of the lottery!! 
-    - Just use it for fun!
+- Two extra ancilla qubits are placed in superposition.
+- The user's birth month and day are encoded as CRY rotation angles.
+- The ancillas entangle with two **distinct** target qubits (no collision), gently biasing the result.
+- Your birthday subtly nudges the distribution — without collapsing it.
 
 ---
-### 6) Contribution
-    
-- If you want to add another "Lottery game", follow the form and send PR to **[github](https://github.com/Denny-Hwang/q-lottery-game)**  
+
+### 4) Supported lottery games
+
+| Game | Rule |
+|---|---|
+| **[Lotto (Korea)](https://dhlottery.co.kr/)** | Pick 6 numbers from 1–45 |
+| **[Powerball (USA)](https://www.powerball.com/)** | 5 white balls from 1–69 + 1 Powerball from 1–26 |
+| **[Lotto India (India)](https://www.lotto.in/)** | 6 numbers from 1–50 + 1 Joker ball from 1–5 |
+| **[Lotto7 (Japan)](https://en.lottolyzer.com/how-to-play/japan/lotto-7)** | Pick 7 numbers from 1–37 |
+| **[French Lottery (France)](http://france-lottery.com/)** | 5 numbers from 1–49 + 1 Lucky number from 1–10 |
+| **Custom** | Customize your Q-Lottery game |
+
+---
+
+### 5) Caution
+
+- Quantum-generated random numbers are statistically "more random" than PRNG, but **this does not improve your odds of winning**.
+- Use it for fun only.
+
+---
+
+### 6) Run locally
+
+```bash
+pip install -r requirements.txt
+streamlit run main.py
+```
+
+Python 3.11 is recommended (see `runtime.txt`).
+
+---
+
+### 7) Tests
+
+```bash
+pip install pytest
+pytest
+```
+
+---
+
+### 8) Contributing
+
+Want to add another lottery? See [`add_new_game/registration_form.md`](add_new_game/registration_form.md) and open a PR.
+
+---
+
+### 9) License
+
+[MIT](LICENSE)

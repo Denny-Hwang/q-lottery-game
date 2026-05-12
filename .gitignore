@@ -134,3 +134,10 @@ venv
 *.pyc
 .DS_Store
 .env
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+Thumbs.db
