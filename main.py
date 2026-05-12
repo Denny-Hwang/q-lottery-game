@@ -16,9 +16,11 @@ import pandas as pd
 import streamlit as st
 
 import intro_doc
+from card_export import render_card_png
 from game_doc import custom_doc
 from games import GAMES, GameConfig
 from i18n import LANG_LABEL, SUPPORTED, get_lang, set_lang, t
+import lotto_api
 from q_function import (
     QRNGError,
     bits_needed,
@@ -30,6 +32,8 @@ from ui import (
     inject_styles,
     render_balls,
 )
+
+_KOREAN_LOTTO_KEY = "Lotto(Kor)"
 
 # ── Page setup ─────────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -166,6 +170,73 @@ def generate_numbers_detailed(
     return numbers, details, main_fig, bonus_fig
 
 
+@st.cache_data(ttl=1800, show_spinner=False)
+def _cached_latest_korean_draw():
+    """Cached wrapper around the dhlottery API (30-minute TTL)."""
+    return lotto_api.fetch_latest_draw(timeout=4.0)
+
+
+_RANK_KEYS = {
+    "1st": "compare.rank.1st",
+    "2nd": "compare.rank.2nd",
+    "3rd": "compare.rank.3rd",
+    "4th": "compare.rank.4th",
+    "5th": "compare.rank.5th",
+    None: "compare.rank.none",
+}
+
+
+def _render_korean_lotto_comparison(
+    rows: list[tuple[str, list[int], Optional[int]]],
+    *,
+    palette: list[str],
+    upper_bound: int,
+) -> None:
+    st.divider()
+    st.subheader(t("compare.heading"))
+
+    with st.spinner(t("compare.fetching")):
+        draw = _cached_latest_korean_draw()
+
+    if draw is None:
+        st.info(t("compare.unavailable"))
+        return
+
+    st.markdown(
+        f"**{t('compare.draw_header').format(n=draw.draw_no, date=draw.date.isoformat())}**"
+    )
+    render_balls(
+        list(draw.numbers),
+        upper_bound=upper_bound,
+        palette=palette,
+        bonus=draw.bonus,
+        bonus_color="#F59E0B",
+        bonus_upper_bound=upper_bound,
+        label=t("compare.bonus"),
+    )
+
+    for label, numbers, _bonus in rows:
+        comparison = lotto_api.compare(numbers, draw)
+        bonus_suffix = (
+            t("compare.bonus_hit_suffix") if comparison.bonus_hit else ""
+        )
+        rank_label = t(_RANK_KEYS[comparison.rank])
+        line = t("compare.row_summary").format(
+            label=label,
+            match=comparison.match_main,
+            bonus_suffix=bonus_suffix,
+            rank=rank_label,
+        )
+        if comparison.rank in {"1st", "2nd", "3rd"}:
+            st.success(line)
+        elif comparison.rank in {"4th", "5th"}:
+            st.info(line)
+        else:
+            st.write(line)
+
+    st.caption(t("compare.disclaimer"))
+
+
 def _render_history() -> None:
     history = st.session_state["history"]
     if not history:
@@ -295,6 +366,32 @@ def _render_game_form(
     st.caption(t("result.share_caption"))
     st.code(share_text, language="text")
 
+    # Downloadable PNG ticket
+    png_bytes = render_card_png(
+        title=game_label,
+        rows=rows_for_share,
+        upper_bound=main_upper_bound,
+        palette=main_palette,
+        bonus_color=bonus_color,
+        bonus_upper_bound=bonus_upper_bound,
+    )
+    st.download_button(
+        label=t("download.button"),
+        data=png_bytes,
+        file_name=f"q-lottery-{game_label.replace(' ', '_')}-{dt.datetime.now():%Y%m%d-%H%M%S}.png",
+        mime="image/png",
+        help=t("download.help"),
+        use_container_width=True,
+    )
+
+    # ── Korean Lotto comparison ────────────────────────────────────────────
+    if game_label == _KOREAN_LOTTO_KEY:
+        _render_korean_lotto_comparison(
+            rows_for_share,
+            palette=main_palette,
+            upper_bound=main_upper_bound,
+        )
+
     _push_history(
         HistoryEntry(
             timestamp=dt.datetime.now().strftime("%H:%M:%S"),
@@ -320,12 +417,15 @@ def _render_game_form(
                     with c1:
                         st.markdown(f"**{t('details.circuit.main')}**")
                         st.pyplot(main_fig)
+                        st.caption(t("details.circuit.caption"))
                     with c2:
                         st.markdown(f"**{t('details.circuit.bonus')}**")
                         st.pyplot(bonus_fig)
+                        st.caption(t("details.circuit.caption"))
                 else:
                     st.markdown(f"**{t('details.circuit')}**")
                     st.pyplot(main_fig)
+                    st.caption(t("details.circuit.caption"))
 
                 st.markdown(f"**{t('details.decoding')}**")
                 mapping = [
