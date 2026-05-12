@@ -1,115 +1,133 @@
+"""Marketing / educational copy for the landing page.
+
+All copy uses the ``i18n.t()`` helper so the same page can be served in both
+Korean and English.
+"""
+from __future__ import annotations
+
 import streamlit as st
 
-
-def intro_1():
-    st.title("Quantum Lottery Game")
-    st.write(
-        """
-        ### 1) Let's generate *real random number* using IBM Quantum Computer
-
-        - Real random number generation for lottery-game using IBM quantum computer  
-        **[IBM Qiskit library](https://qiskit.org/)**
-
-        ---
-
-        ### 2) What is *real* random number generation?
-
-        - "**Random number generation(RNG)** is a sequence of numbers or symbols that cannot be reasonably predicted better than by random chance is generated. 
-        This means that the particular outcome sequence will contain some patterns detectable in hindsight but **unpredictable** to foresight"(Wikipedia)   
-
-        - There are two method for [RNG](https://en.wikipedia.org/wiki/Random_number_generation)
-
-            - **"True" random number generation(TRNG)** uses measurement of some physical phenomenon that is expected to be random and then compensates 
-            for possible biases in the measurement process
-
-            - **"Pseudo" random number generation(PRNG)** uses computational algorithm that can produce long sequences of apparently random results, 
-            which are in fact completely determined by a shorter initial value, known as a seed value or key
+from i18n import get_lang
 
 
-        - In this application, we use IBM cloud quantum computer to generate real random number using the **superpositon** of the qubit states. 
-        - There are some way for generating random number using **[Qiskit(Quantum Information Software Kit)](https://qiskit.org/)**
+_COPY = {
+    "ko": {
+        "title": "양자 로또 번호 생성기",
+        "subtitle": "IBM Quantum 시뮬레이터로 만드는 *진짜* 난수",
+        "section_real": "1) 진짜 난수란?",
+        "real_body": (
+            "**진짜 난수(TRNG)** 는 측정으로부터 얻은 물리 현상을 바탕으로 생성되어 예측이 불가능합니다.\n"
+            "반면 우리가 흔히 쓰는 **의사 난수(PRNG)** 는 시드 값에서 결정론적으로 만들어집니다.\n\n"
+            "이 앱은 IBM Qiskit 의 `AerSimulator` 를 사용해 양자 회로를 측정하고, 그 결과를 난수로 사용합니다."
+        ),
+        "section_modes": "2) 두 가지 생성 모드",
+        "simple_title": "A) 단순 Q-RNG",
+        "simple_body": "Hadamard 게이트로 모든 큐비트를 50:50 중첩 상태로 만든 뒤 측정합니다.",
+        "birthday_title": "B) 생일 얽힘 Q-RNG",
+        "birthday_body": (
+            "- 보조 큐비트 2개를 추가하고\n"
+            "- 생월·생일을 Ry 회전각으로 인코딩한 뒤\n"
+            "- CRY 게이트로 *서로 다른* 메인 큐비트와 얽혀\n"
+            "- 결과를 자연스럽게 살짝만 편향시킵니다."
+        ),
+        "section_games": "3) 지원하는 로또",
+        "games_body": (
+            "- 한국 Lotto 6/45\n"
+            "- 미국 Powerball\n"
+            "- 인도 Lotto India\n"
+            "- 일본 Lotto7\n"
+            "- 프랑스 Loto\n"
+            "- Custom (직접 범위 지정)"
+        ),
+        "cta_caption": "왼쪽 메뉴에서 게임을 골라 바로 시작해 보세요!",
+        "example_simple": "> 단순 Q-RNG 회로 예시",
+        "example_birthday": "> 생일 얽힘 Q-RNG 회로 예시 (8월 30일)",
+        "generated": "생성된 번호 : ",
+        "binary": "이진",
+        "decimal": "십진",
+    },
+    "en": {
+        "title": "Quantum Lottery Game",
+        "subtitle": "*Real* random numbers, generated with an IBM Quantum simulator",
+        "section_real": "1) What is *real* random number generation?",
+        "real_body": (
+            "**True random number generation (TRNG)** measures a physical phenomenon and is unpredictable.\n"
+            "**Pseudo random number generation (PRNG)** is fully determined by an initial seed.\n\n"
+            "This app builds quantum circuits with IBM Qiskit and runs them on the local `AerSimulator` backend."
+        ),
+        "section_modes": "2) Two generation modes",
+        "simple_title": "A) Simple Q-RNG",
+        "simple_body": "Apply a Hadamard gate to every qubit, putting each into a 50/50 superposition, then measure.",
+        "birthday_title": "B) Birthday-entangled Q-RNG",
+        "birthday_body": (
+            "- Add two ancilla qubits\n"
+            "- Encode birth month and day as Ry rotation angles\n"
+            "- Use CRY gates to entangle with two *distinct* main qubits\n"
+            "- Result: a gentle, non-collapsing bias from your birthday."
+        ),
+        "section_games": "3) Supported lotteries",
+        "games_body": (
+            "- Korea: Lotto 6/45\n"
+            "- USA: Powerball\n"
+            "- India: Lotto India\n"
+            "- Japan: Lotto7\n"
+            "- France: French Loto\n"
+            "- Custom (your own range)"
+        ),
+        "cta_caption": "Pick a game from the sidebar to get started!",
+        "example_simple": "> Simple Q-RNG example circuit",
+        "example_birthday": "> Birthday-entangled example circuit (Aug 30)",
+        "generated": "Generated number: ",
+        "binary": "binary",
+        "decimal": "decimal",
+    },
+}
 
-        -  1) **Qiskit RNG**
-            - It needed IBM Quantum account for IBM Quantum backends. So, skip this method for this application.
-            If you want to use this library, check this links below  
-                - https://qiskit.org/documentation/apidoc/ibmq_random.html  
-                - https://github.com/qiskit-community/qiskit_rng/
-        -  2) **Qauntum circuit** based random number generation. **[IBM Quantum system](https://quantum-computing.ibm.com/services/docs/services/manage/systems/)** services cryogenic based quantum processor
-            - Using this cloud based quantum computer, we could make quantum circuit for specific operation
-            - In this application we use the "**[H(Hadamard) gate](https://learn.qiskit.org/course/ch-states/single-qubit-gates#hgate)**" for 
-            **"[superposition](https://en.wikipedia.org/wiki/Quantum_superposition)"** and "**[CRY gate](https://qiskit.org/documentation/stubs/qiskit.circuit.QuantumCircuit.cry.html)**" for **"[entanglement](https://en.wikipedia.org/wiki/Quantum_entanglement)"** between the qubits  
-                *<Superposition>*
-                - state of the single qubit has 50/50 measurement probability of |0⟩/|1⟩ state  
-                *<Entanglement>*  
-                - Actually, because of the 'RNG generation time' and 'IBM Q account problem', we didn't used 'Real' device.  
-                - We use the **[Qasm simulator](https://qiskit.org/documentation/stubs/qiskit.providers.aer.QasmSimulator.html)** as backend which mimic an IBMQ backend.
 
-        """)
+def _c() -> dict:
+    return _COPY.get(get_lang(), _COPY["en"])
 
 
-def intro_2():
-    st.write(
-        """
-        ---
-        ### 3) There are two mode for random number generation
-
-        #### A) Simple random number generation using quantum circuit using qiskit library
-        """)
+def intro_header() -> None:
+    c = _c()
+    st.title(c["title"])
+    st.caption(c["subtitle"])
 
 
-def intro_3():
-    st.write(
-        """
-        #### B) Birth-day entangled random number generation
-
-            - Add two qubits for entanglement
-            - Applying user's birth-day as a rotational angle of Ry gate
-            - Add controlled rotational y gate on birth-day qubits and RNG qubits
-            - Your birth-day will make some bias to the controlled qubits
-
-        """)
+def intro_concept() -> None:
+    c = _c()
+    st.subheader(c["section_real"])
+    st.write(c["real_body"])
 
 
-def intro_4():
-    st.write(
-        """ 
-        ---                 
-        ### 4) Serviced Lottery Game
+def intro_modes_simple() -> None:
+    c = _c()
+    st.subheader(c["section_modes"])
+    st.markdown(f"#### {c['simple_title']}")
+    st.write(c["simple_body"])
 
-        - **[Lotto(Korea)](https://dhlottery.co.kr/)**
 
-          : Select 6 numbers in range 45
+def intro_modes_birthday() -> None:
+    c = _c()
+    st.markdown(f"#### {c['birthday_title']}")
+    st.write(c["birthday_body"])
 
-        - **[Powerball(USA)](https://www.powerball.com/)**
 
-          : Select 5 numbers in range 70 for 'white ball', 1 more selection in range 25 for 'power ball'
-          
-        - **[Lotto India(India)](https://www.lotto.in/)**
+def intro_games() -> None:
+    c = _c()
+    st.subheader(c["section_games"])
+    st.write(c["games_body"])
+    st.info(c["cta_caption"])
 
-          : Select 6 numbers in the range 50 and select one 'Joker Ball' in the range 5
-          
-        - **[Lotto7(Japan)](https://en.lottolyzer.com/how-to-play/japan/lotto-7)**
 
-          : Select 7 numbers in the range 37
-          
-        - **[French Lottery(France)](http://france-lottery.com/)**
+def example_simple_caption() -> str:
+    return _c()["example_simple"]
 
-          : Select 5 numbers in the range 49 and select one 'Lucky number' in the range 10
-          
-        - **Custom**
 
-          : Customize your Q-lottery-game
-            
+def example_birthday_caption() -> str:
+    return _c()["example_birthday"]
 
-        ---
-        ### 5) Caution!!
 
-            - Although real random number generated by QC is more random than pseudo random number, 
-              it does not guarantee winning of the lottery!! 
-            - Just use it for fun!
-
-        ---  
-        ### 6) Contribution
-
-        - If you want to add another "Lottery game", follow the form and send PR to **[github](https://github.com/Denny-Hwang/q-lottery-game)**  
-        """)
+def example_result_line(raw_bits: str, decimal: int) -> str:
+    c = _c()
+    return f"{c['generated']}`{raw_bits}` ({c['binary']}) → **{decimal}** ({c['decimal']})"
