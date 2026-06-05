@@ -51,7 +51,7 @@ def _bloch_grid(vectors, labels, *, collapsed: bool, key_prefix: str) -> None:
                 fig = bloch_viz.bloch_figure(vectors[idx], label=labels[idx], collapsed=collapsed)
                 st.plotly_chart(
                     fig,
-                    use_container_width=True,
+                    width="stretch",
                     config={"displayModeBar": False},
                     key=f"{key_prefix}_{idx}",
                 )
@@ -66,7 +66,7 @@ def _prob_grid(p0p1, labels, *, key_prefix: str) -> None:
                 st.caption(labels[idx])
                 st.plotly_chart(
                     bloch_viz.probability_bar(p0p1[idx][1]),
-                    use_container_width=True,
+                    width="stretch",
                     config={"displayModeBar": False},
                     key=f"{key_prefix}_{idx}",
                 )
@@ -128,7 +128,7 @@ def _render_measure(final_stage) -> None:
             final_stage.bloch[: final_stage.num_main], labels,
             collapsed=False, key_prefix="meas_pre",
         )
-        if st.button(t("lab.measure.button"), type="primary", use_container_width=True):
+        if st.button(t("lab.measure.button"), type="primary", width="stretch"):
             _resample(final_stage)
             st.rerun()
         return
@@ -137,7 +137,7 @@ def _render_measure(final_stage) -> None:
     _bloch_grid(poles, labels, collapsed=True, key_prefix="meas_post")
     st.success(t("lab.measure.result").format(bits=measured, dec=int(measured, 2)))
     st.caption(t("lab.measure.collapsed_caption"))
-    if st.button(t("lab.measure.again"), use_container_width=True):
+    if st.button(t("lab.measure.again"), width="stretch"):
         _resample(final_stage)
         st.rerun()
 
@@ -162,7 +162,7 @@ def _render_decode(final_stage, *, max_num: int) -> None:
         }
         for c in reversed(contributions)  # most-significant first, as written
     ]
-    st.dataframe(pd.DataFrame(table), hide_index=True, use_container_width=True)
+    st.dataframe(pd.DataFrame(table), hide_index=True, width="stretch")
 
     terms = " + ".join(f"{c.bit}×{c.place_value}" for c in reversed(contributions))
     st.markdown(t("lab.decode.formula").format(terms=terms, total=total))
@@ -233,13 +233,13 @@ def render_lab() -> None:
     # ── Stepper navigation ──────────────────────────────────────────────────────
     st.divider()
     prev_col, mid_col, next_col = st.columns([1, 2, 1])
-    if prev_col.button(t("lab.nav.prev"), disabled=(step == 0), use_container_width=True):
+    if prev_col.button(t("lab.nav.prev"), disabled=(step == 0), width="stretch"):
         st.session_state["lab_step"] = step - 1
         st.rerun()
     if next_col.button(
         t("lab.nav.next"),
         disabled=(step == n_views - 1),
-        use_container_width=True,
+        width="stretch",
         type="primary",
     ):
         st.session_state["lab_step"] = step + 1

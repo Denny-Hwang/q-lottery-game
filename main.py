@@ -102,7 +102,7 @@ lot_selection = st.sidebar.radio(t("sidebar.menu"), menu_options)
 
 st.sidebar.divider()
 if st.session_state["history"]:
-    if st.sidebar.button(t("button.clear_history"), use_container_width=True):
+    if st.sidebar.button(t("button.clear_history"), width="stretch"):
         st.session_state["history"] = []
         st.rerun()
 
@@ -320,7 +320,7 @@ def _render_game_form(
         help=t("details.help"),
     )
 
-    if not st.button(t("button.generate"), type="primary", use_container_width=True):
+    if not st.button(t("button.generate"), type="primary", width="stretch"):
         _render_history()
         return
 
@@ -386,7 +386,7 @@ def _render_game_form(
         file_name=f"q-lottery-{game_label.replace(' ', '_')}-{dt.datetime.now():%Y%m%d-%H%M%S}.png",
         mime="image/png",
         help=t("download.help"),
-        use_container_width=True,
+        width="stretch",
     )
 
     # ── Korean Lotto comparison ────────────────────────────────────────────
@@ -446,7 +446,7 @@ def _render_game_form(
                 st.dataframe(
                     pd.DataFrame(mapping),
                     hide_index=True,
-                    use_container_width=True,
+                    width="stretch",
                 )
 
     _render_history()
