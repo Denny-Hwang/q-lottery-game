@@ -45,6 +45,28 @@ Pure Hadamard-gate-based superposition. Every bit is a fair coin flip.
 
 ---
 
+### 🔬 Quantum Lab — learn it interactively
+
+Open **🔬 Quantum Lab** from the sidebar to step through how a random number is
+actually born, one stage at a time, with **interactive Bloch spheres** (drag to
+rotate):
+
+1. **Initialize** — every qubit starts at |0⟩ (north pole of the Bloch sphere).
+2. **Superposition** — a Hadamard gate tips each qubit to the equator (50/50).
+3. **Phase** *(optional)* — a T gate spins the vector around the equator while the
+   measurement odds stay put — the intuition behind interference.
+4. **Entangle** *(optional)* — CRY gates link the birthday ancillas, and the
+   targeted qubits' Bloch vectors visibly **shrink** (|r| < 1).
+5. **Measure** — press the button and watch each qubit **collapse** to the north
+   (0, blue) or south (1, red) pole.
+6. **Decode** — the measured bits are summed by place value into a decimal,
+   range-checked (rejection sampling), and finally rendered as your lottery ball.
+
+See [`docs/quantum-visualization-improvement-plan.md`](docs/quantum-visualization-improvement-plan.md)
+for the design rationale.
+
+---
+
 ### 4) Supported lottery games
 
 | Game | Rule |

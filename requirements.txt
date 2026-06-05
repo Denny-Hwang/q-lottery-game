@@ -11,3 +11,4 @@ pylatexenc>=2.10
 # Visualization
 matplotlib>=3.8.0
 Pillow>=10.0.0
+plotly>=5.20.0
