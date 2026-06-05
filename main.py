@@ -20,6 +20,7 @@ from card_export import render_card_png
 from game_doc import custom_doc
 from games import GAMES, GameConfig
 from i18n import LANG_LABEL, SUPPORTED, get_lang, set_lang, t
+from lab import render_lab
 import lotto_api
 from q_function import (
     QRNGError,
@@ -92,7 +93,11 @@ if chosen_lang != get_lang():
     set_lang(chosen_lang)
     st.rerun()
 
-menu_options = [t("sidebar.about")] + list(GAMES.keys()) + [t("sidebar.custom")]
+menu_options = (
+    [t("sidebar.about")]
+    + list(GAMES.keys())
+    + [t("sidebar.custom"), t("sidebar.lab")]
+)
 lot_selection = st.sidebar.radio(t("sidebar.menu"), menu_options)
 
 st.sidebar.divider()
@@ -410,6 +415,7 @@ def _render_game_form(
         st.divider()
         st.subheader(t("details.heading"))
         st.caption(t("details.caption"))
+        st.caption(t("details.lab_hint"))
         for label, details, main_fig, bonus_fig in detail_blocks:
             with st.expander(f"{t('result.game')} {label}", expanded=(num_game == 1)):
                 if bonus_fig is not None:
@@ -498,6 +504,8 @@ def render_about() -> None:
     st.divider()
     intro_doc.intro_concept()
 
+    st.info(t("lab.cta"))
+
     intro_doc.intro_modes_simple()
     st.write(intro_doc.example_simple_caption())
     from q_function import random_number  # local import keeps top of module cleaner
@@ -535,5 +543,7 @@ if lot_selection == t("sidebar.about"):
     render_about()
 elif lot_selection == t("sidebar.custom"):
     render_custom()
+elif lot_selection == t("sidebar.lab"):
+    render_lab()
 elif lot_selection in GAMES:
     render_game(lot_selection, GAMES[lot_selection])

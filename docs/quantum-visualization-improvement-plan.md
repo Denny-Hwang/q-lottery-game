@@ -8,7 +8,7 @@
 |---|---|
 | 작성일 | 2026-06-05 |
 | 작업 브랜치 | `claude/sleepy-allen-7YqxT` |
-| 상태 | **Phase 0 (계획 수립)** — 구현 착수 전 리뷰 대기 |
+| 상태 | **Phase 1–7 구현 완료** — Quantum Lab 페이지 추가, 96개 테스트 통과 |
 | 관련 파일 | `q_function.py`, `main.py`, `ui.py`, `intro_doc.py`, `i18n.py` |
 
 ---
@@ -346,6 +346,7 @@ def collapse_animation(before: Vec3, after: Vec3) -> go.Figure:
 
 | 날짜 | 작성자 | 내용 |
 |---|---|---|
-| 2026-06-05 | Claude (claude/sleepy-allen-7YqxT) | 코드베이스 전체 분석 완료. 양자 시각화 개선 계획 v1 수립 및 본 문서 작성. 7단계 로드맵·신규 모듈(`q_state.py`/`bloch_viz.py`/`lab.py`) 설계. Phase 0 산출물로 저장소에 기록. 다음 단계: §10 결정 확정 후 Phase 1 착수. |
+| 2026-06-05 | Claude (claude/sleepy-allen-7YqxT) | 코드베이스 전체 분석 완료. 양자 시각화 개선 계획 v1 수립 및 본 문서 작성. 7단계 로드맵·신규 모듈(`q_state.py`/`bloch_viz.py`/`lab.py`) 설계. Phase 0 산출물로 저장소에 기록. |
+| 2026-06-05 | Claude (claude/sleepy-allen-7YqxT) | 사용자 결정 확정(Plotly 3D 채택, Phase 1부터 구현). **Phase 1–7 일괄 구현**: ① `q_state.py`(상태/블로흐 데이터 레이어, 단위테스트 20개) ② `bloch_viz.py`(Plotly 인터랙티브 블로흐 구·확률 막대, 테스트 11개) ③ `lab.py`(🔬 양자 실험실 스텝퍼 페이지: 초기화→중첩→위상→얽힘→측정/collapse→디코딩) ④ `main.py` 라우팅·사이드바·About CTA·details 힌트 ⑤ `i18n.py` ko/en 신규 문자열 ⑥ `requirements.txt`에 plotly 추가 ⑦ README 갱신. 전체 96개 테스트 통과, ruff 통과. |
 
 <!-- 이후 각 Phase 완료 시 이 표에 한 줄씩 append 한다. -->
