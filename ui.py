@@ -72,6 +72,12 @@ def inject_styles() -> None:
             font-size: 13px; color: #6B7280;
             min-width: 64px;
         }
+        .qlb-bit {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 26px; height: 26px; border-radius: 6px;
+            color: #fff; font-weight: 700; font-size: 13px;
+            font-variant-numeric: tabular-nums;
+        }
         @keyframes qlb-pop {
             0%   { transform: scale(.2) rotate(-20deg); opacity: 0; }
             70%  { transform: scale(1.08) rotate(2deg);  opacity: 1; }
@@ -114,6 +120,29 @@ def render_balls(
         pieces.append("<span class='qlb-bonus-sep'>+</span>")
         color = bonus_color or _ball_color(bonus, bonus_upper_bound or 1, palette)
         pieces.append(_ball_html(bonus, color, animate_delay_ms=len(list(numbers)) * 70 + 100))
+    pieces.append("</div>")
+    st.markdown("".join(pieces), unsafe_allow_html=True)
+
+
+_BIT0_COLOR = "#2563EB"  # blue: a measured 0
+_BIT1_COLOR = "#DC2626"  # red: a measured 1
+
+
+def _bit_color(bit: str) -> str:
+    """Color a single measured bit (blue 0 / red 1), matching the Bloch poles."""
+    return _BIT0_COLOR if bit == "0" else _BIT1_COLOR
+
+
+def render_bit_chips(binary_str: str, *, label: str = "") -> None:
+    """Render a measured bitstring (MSB-first) as a row of blue 0 / red 1 chips."""
+    inject_styles()
+    pieces: list[str] = ["<div class='qlb-row'>"]
+    if label:
+        pieces.append(f"<span class='qlb-label'>{html.escape(label)}</span>")
+    for ch in str(binary_str):
+        pieces.append(
+            f"<span class='qlb-bit' style='background:{_bit_color(ch)}'>{html.escape(ch)}</span>"
+        )
     pieces.append("</div>")
     st.markdown("".join(pieces), unsafe_allow_html=True)
 

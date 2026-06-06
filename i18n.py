@@ -361,6 +361,18 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "ko": "🔬 블로흐 구와 측정 collapse를 인터랙티브하게 보고 싶다면 왼쪽 메뉴의 **양자 실험실**을 열어보세요.",
         "en": "🔬 Want an interactive Bloch sphere and collapse view? Open the **Quantum Lab** from the sidebar.",
     },
+    "details.bloch.heading": {
+        "ko": "측정된 큐비트 (블로흐 구)",
+        "en": "Measured qubits (Bloch spheres)",
+    },
+    "details.bloch.featured": {
+        "ko": "↑ **{ball} = {dec}** 를 만든 각 큐비트의 측정 결과입니다. 파랑=0(북극), 빨강=1(남극).",
+        "en": "↑ The measured state of each qubit behind **{ball} = {dec}**. Blue = 0 (north), red = 1 (south).",
+    },
+    "details.bloch.chips": {
+        "ko": "각 번호의 측정 비트열 (파랑=0, 빨강=1). 자리값을 더하면 위 표의 십진수가 됩니다.",
+        "en": "Measured bits for every number (blue = 0, red = 1). Summed by place value, they give the decimals above.",
+    },
 }
 
 
