@@ -319,6 +319,10 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "ko": "각 큐비트가 북극(0)·남극(1)으로 확정되었습니다.",
         "en": "Every qubit has snapped to the north (0) or south (1) pole.",
     },
+    "lab.measure.play_hint": {
+        "ko": "▶ 버튼을 누르면 적도에서 극으로 collapse 되는 과정을 다시 재생할 수 있어요.",
+        "en": "Press ▶ to replay the collapse from the equator down to the pole.",
+    },
     # Decode view
     "lab.decode.need_measure": {
         "ko": "먼저 ⑤ 측정 단계에서 측정해 주세요.",
