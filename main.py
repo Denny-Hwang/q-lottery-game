@@ -20,6 +20,7 @@ from card_export import render_card_png
 from game_doc import custom_doc
 from games import GAMES, GameConfig
 from i18n import LANG_LABEL, SUPPORTED, get_lang, set_lang, t
+import bloch_viz
 from lab import render_lab
 import lotto_api
 from q_function import (
@@ -28,10 +29,12 @@ from q_function import (
     q_rng_lotto,
     q_rng_lotto_with_birthday,
 )
+from q_state import collapse_to_poles
 from ui import (
     format_share_text,
     inject_styles,
     render_balls,
+    render_bit_chips,
 )
 
 _KOREAN_LOTTO_KEY = "Lotto(Kor)"
@@ -448,6 +451,31 @@ def _render_game_form(
                     hide_index=True,
                     width="stretch",
                 )
+
+                st.markdown(f"**{t('details.bloch.heading')}**")
+                first_label = ball_labels[0]
+                first_binary, first_decimal = details[0]
+                poles = collapse_to_poles(first_binary)
+                if len(poles) <= 8:
+                    cols = st.columns(len(poles))
+                    for qi, (col, pole) in enumerate(zip(cols, poles)):
+                        with col:
+                            st.plotly_chart(
+                                bloch_viz.bloch_figure(
+                                    pole, label=f"q{qi}", collapsed=True, height=170
+                                ),
+                                width="stretch",
+                                config={"displayModeBar": False},
+                                key=f"detbloch_{label}_{qi}",
+                            )
+                    st.caption(
+                        t("details.bloch.featured").format(
+                            ball=first_label, dec=int(first_decimal)
+                        )
+                    )
+                for bl, (binary, _decimal) in zip(ball_labels, details):
+                    render_bit_chips(binary, label=f"{bl} = {_decimal}")
+                st.caption(t("details.bloch.chips"))
 
     _render_history()
 

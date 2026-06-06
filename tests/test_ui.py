@@ -2,7 +2,13 @@
 from __future__ import annotations
 
 from games import KOREAN_LOTTO_PALETTE, RAINBOW_PALETTE
-from ui import _ball_color, _text_color_for, format_share_text
+from ui import _ball_color, _bit_color, _text_color_for, format_share_text
+
+
+class TestBitColor:
+    def test_zero_is_blue_one_is_red(self):
+        assert _bit_color("0") == "#2563EB"
+        assert _bit_color("1") == "#DC2626"
 
 
 class TestBallColor:
