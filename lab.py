@@ -72,6 +72,21 @@ def _prob_grid(p0p1, labels, *, key_prefix: str) -> None:
                 )
 
 
+def _collapse_grid(befores, afters, labels, *, key_prefix: str) -> None:
+    for start in range(0, len(afters), _BLOCH_PER_ROW):
+        end = min(start + _BLOCH_PER_ROW, len(afters))
+        cols = st.columns(end - start)
+        for col, idx in zip(cols, range(start, end)):
+            with col:
+                fig = bloch_viz.collapse_animation(befores[idx], afters[idx], label=labels[idx])
+                st.plotly_chart(
+                    fig,
+                    width="stretch",
+                    config={"displayModeBar": False},
+                    key=f"{key_prefix}_{idx}",
+                )
+
+
 def _draw_circuit(circuit) -> None:
     """Draw the partial circuit; prefer matplotlib, fall back to a text diagram."""
     fig = None
@@ -134,7 +149,9 @@ def _render_measure(final_stage) -> None:
         return
 
     poles = collapse_to_poles(measured)
-    _bloch_grid(poles, labels, collapsed=True, key_prefix="meas_post")
+    befores = final_stage.bloch[: final_stage.num_main]
+    _collapse_grid(befores, poles, labels, key_prefix="meas_anim")
+    st.caption(t("lab.measure.play_hint"))
     st.success(t("lab.measure.result").format(bits=measured, dec=int(measured, 2)))
     st.caption(t("lab.measure.collapsed_caption"))
     if st.button(t("lab.measure.again"), width="stretch"):

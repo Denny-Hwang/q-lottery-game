@@ -48,6 +48,31 @@ class TestBlochFigure:
         assert bloch_viz.vector_color((1.0, 0.0, 0.0), collapsed=False) == bloch_viz._INDIGO
 
 
+class TestCollapseAnimation:
+    def _shaft_color(self, fig):
+        for d in fig.data:
+            if isinstance(d, go.Scatter3d) and d.mode == "lines" and d.line.width == 8:
+                return d.line.color
+        return None
+
+    def test_has_frames_and_lands_on_pole(self):
+        fig = bloch_viz.collapse_animation((1.0, 0.0, 0.0), (0.0, 0.0, -1.0), label="q0")
+        assert isinstance(fig, go.Figure)
+        assert len(fig.frames) >= 2
+        assert _all_finite(fig)
+        last_line = next(d for d in fig.frames[-1].data if isinstance(d, go.Scatter3d))
+        assert float(last_line.z[-1]) < -0.9  # ends near the south pole
+
+    @pytest.mark.parametrize("after,expected", [((0, 0, 1), bloch_viz._BLUE), ((0, 0, -1), bloch_viz._RED)])
+    def test_color_matches_target_pole(self, after, expected):
+        fig = bloch_viz.collapse_animation((1.0, 0.0, 0.0), after)
+        assert self._shaft_color(fig) == expected
+
+    def test_has_play_button(self):
+        fig = bloch_viz.collapse_animation((1.0, 0.0, 0.0), (0.0, 0.0, 1.0))
+        assert fig.layout.updatemenus  # a ▶ button exists
+
+
 class TestProbabilityBar:
     def test_stacks_to_one(self):
         fig = bloch_viz.probability_bar(0.3)
